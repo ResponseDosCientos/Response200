@@ -1,3 +1,0 @@
-Esta es mi primera prueba en Git
-
-prueba en master
