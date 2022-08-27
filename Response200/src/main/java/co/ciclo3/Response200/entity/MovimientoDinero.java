@@ -16,7 +16,7 @@ public class MovimientoDinero {
     public MovimientoDinero(double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
         this.montoMovimiento = montoMovimiento;
         this.conceptoMovimiento = conceptoMovimiento;
-        this.monto = empresa.getBalance() + montoMovimiento;
+        //this.monto = empresa.getBalance() + montoMovimiento;
         this.nombreEmpleado = empleado.getNombreEmpleado();
     }
 
