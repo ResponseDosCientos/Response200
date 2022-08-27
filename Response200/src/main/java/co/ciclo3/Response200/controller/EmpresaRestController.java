@@ -1,5 +1,4 @@
 package co.ciclo3.Response200.controller;
-
 import co.ciclo3.Response200.entity.Empresa;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,19 +7,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-
 public class EmpresaRestController {
 
     @GetMapping("/empresa/{nit}")
     public Empresa findByNit(@PathVariable long nit) {
-
-
-
-    public class EmpresaRestController {
-
-    @GetMapping("/empresa/{nit}")
-    public Empresa findByNit(@PathVariable long nit) {
-
         Empresa empresa = new Empresa();
         empresa.setNitEmpresa(nit);
         empresa.setNomEmpresa("MSI");
@@ -28,9 +18,8 @@ public class EmpresaRestController {
         empresa.setTelEmpresa(321034432);
         return empresa;
     }
-
     @GetMapping("/empresa")
-    public List<Empresa> finAll() {
+    public List<Empresa> finAll(){
         List<Empresa> empresas = new ArrayList<Empresa>();
         Empresa empresa1 = new Empresa();
         empresa1.setNitEmpresa(1);
@@ -46,7 +35,6 @@ public class EmpresaRestController {
         empresas.add(empresa2);
         return empresas;
     }
-
     @PostMapping("/empresa")
     public Empresa createRol(@RequestBody Empresa empresa) {
         Empresa newEmpresa = new Empresa();
@@ -56,16 +44,14 @@ public class EmpresaRestController {
         newEmpresa.setTelEmpresa(empresa.getTelEmpresa());
         return newEmpresa;
     }
-
     @PutMapping("/empresa/{nit}")
-    public Empresa updateRol(@PathVariable long nit, @RequestBody Empresa empresa) {
+    public Empresa updateRol(@PathVariable long nit, @RequestBody Empresa empresa){
         Empresa putEmpresa = findByNit(nit);
         putEmpresa.setNomEmpresa(empresa.getNomEmpresa());
         putEmpresa.setDirEmpresa(empresa.getDirEmpresa());
         putEmpresa.setTelEmpresa(empresa.getTelEmpresa());
         return putEmpresa;
     }
-
     @DeleteMapping("/empresa/{nit}")
     public void deleteEmpresa(@PathVariable long nit) {
         Empresa putEmpresa = findByNit(nit);

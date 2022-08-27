@@ -1,16 +1,20 @@
 package co.ciclo3.Response200.entity;
 
 public class Empleado {
+
+    private long idEmpleado;
     private String nombreEmpleado;
     private String emailEmpleado;
-    private Empresa empresa;
-    private Rol rol;
+    private String empresa;
+    private String rol;
 
-    public Empleado(String nombreEmpleado, String emailEmpleado, Empresa empresa, Rol rol) {
-        this.nombreEmpleado = nombreEmpleado;
-        this.emailEmpleado = emailEmpleado;
-        this.empresa = empresa;
-        this.rol = rol;
+
+    public long getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(long idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     public String getNombreEmpleado() {
@@ -29,26 +33,27 @@ public class Empleado {
         this.emailEmpleado = emailEmpleado;
     }
 
-    public Empresa getEmpresa() {
+    public String getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
+    public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
 
-    public Rol getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 
     @Override
     public String toString() {
         return "Empleado{" +
-                "nombreEmpleado='" + nombreEmpleado + '\'' +
+                "idEmpleado=" + idEmpleado +
+                ", nombreEmpleado='" + nombreEmpleado + '\'' +
                 ", emailEmpleado='" + emailEmpleado + '\'' +
                 ", empresa=" + empresa +
                 ", rol=" + rol +

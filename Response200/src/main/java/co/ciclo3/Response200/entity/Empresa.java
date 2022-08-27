@@ -1,10 +1,7 @@
 package co.ciclo3.Response200.entity;
 
 public class Empresa {
-<<<<<<< HEAD
 
-=======
->>>>>>> afca1e799135ccd7ddcc5d1c0a6c90082567dae5
     private long nitEmpresa;
     private String nomEmpresa;
     private String dirEmpresa;
@@ -52,8 +49,4 @@ public class Empresa {
                 '}';
     }
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> afca1e799135ccd7ddcc5d1c0a6c90082567dae5
