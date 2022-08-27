@@ -13,9 +13,10 @@ public class MovimientoDinero {
 
 
     //Constructor
-    public MovimientoDinero(double montoMovimiento, String conceptoMovimiento, Empleado empleado) {
+    public MovimientoDinero(double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
         this.montoMovimiento = montoMovimiento;
         this.conceptoMovimiento = conceptoMovimiento;
+        this.monto = empresa.getBalance() + montoMovimiento;
         this.nombreEmpleado = empleado.getNombreEmpleado();
     }
 
@@ -51,12 +52,7 @@ public class MovimientoDinero {
                 '}';
     }
 
-    public double montoPositivoNegativo(double montoMovimiento){
-        this.monto = this.monto + montoMovimiento;
-        return monto;
-    }
 
-    public String usuario( ){
-        return "user";
-    }
+
+
 }
