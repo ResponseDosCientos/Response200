@@ -1,5 +1,4 @@
 package co.ciclo3.Response200.controller;
-
 import co.ciclo3.Response200.entity.Empresa;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,8 +7,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-
-
 public class EmpresaRestController {
 
     @GetMapping("/empresa/{nit}")
@@ -59,5 +56,4 @@ public class EmpresaRestController {
     public void deleteEmpresa(@PathVariable long nit) {
         Empresa putEmpresa = findByNit(nit);
     }
-
 }

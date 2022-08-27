@@ -1,6 +1,7 @@
 package co.ciclo3.Response200.entity;
 
 public class Empresa {
+
     private long nitEmpresa;
     private String nomEmpresa;
     private String dirEmpresa;
@@ -48,3 +49,4 @@ public class Empresa {
                 '}';
     }
 }
+
