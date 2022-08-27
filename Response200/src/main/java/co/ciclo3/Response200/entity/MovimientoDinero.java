@@ -6,10 +6,21 @@ public class MovimientoDinero {
 
     private String conceptoMovimiento;
 
+    //es el monto del balance general de la empresa
+    private double monto;
+
+    private String nombreEmpleado;
+
+
+    //Constructor
+    public MovimientoDinero(double montoMovimiento, String conceptoMovimiento, Empleado empleado) {
+        this.montoMovimiento = montoMovimiento;
+        this.conceptoMovimiento = conceptoMovimiento;
+        this.nombreEmpleado = empleado.getNombreEmpleado();
+    }
 
 
     //Getter and Setter
-
     public double getMontoMovimiento() {
         return montoMovimiento;
     }
@@ -27,19 +38,25 @@ public class MovimientoDinero {
     }
 
 
+    //toString
+
+
     @Override
     public String toString() {
         return "MovimientoDinero{" +
                 "montoMovimiento=" + montoMovimiento +
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
+                ", monto=" + monto +
+                ", nombreEmpleado='" + nombreEmpleado + '\'' +
                 '}';
     }
 
-    public double montoPositivoNegativo(){
-        return -1;
+    public double montoPositivoNegativo(double montoMovimiento){
+        this.monto = this.monto + montoMovimiento;
+        return monto;
     }
 
-    public String usuario(){
+    public String usuario( ){
         return "user";
     }
 }
