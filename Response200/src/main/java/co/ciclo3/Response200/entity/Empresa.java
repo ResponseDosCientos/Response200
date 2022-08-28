@@ -6,6 +6,7 @@ public class Empresa {
     private String nomEmpresa;
     private String dirEmpresa;
     private int telEmpresa;
+    private double balance;
 
     public long getNitEmpresa() {
         return nitEmpresa;
@@ -39,6 +40,11 @@ public class Empresa {
         this.telEmpresa = telEmpresa;
     }
 
+    public double getBalance() { return balance; }
+
+    public void setBalance(double balance) { this.balance = balance; }
+
+
     @Override
     public String toString() {
         return "Empresa{" +
@@ -46,6 +52,7 @@ public class Empresa {
                 ", nomEmpresa='" + nomEmpresa + '\'' +
                 ", dirEmpresa='" + dirEmpresa + '\'' +
                 ", telEmpresa=" + telEmpresa +
+                ", balance=" + balance +
                 '}';
     }
 }
