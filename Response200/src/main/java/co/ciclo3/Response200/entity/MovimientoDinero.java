@@ -6,9 +6,10 @@ public class MovimientoDinero {
 
     private String conceptoMovimiento;
 
-    //es el monto del balance general de la empresa
+    //Variable utilizada para representar el balance general de la empresa
     private double monto;
 
+    //Variable utilizada para representar el usuario que realiza el movimiento
     private String nombreEmpleado;
 
 
@@ -16,7 +17,8 @@ public class MovimientoDinero {
     public MovimientoDinero(double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
         this.montoMovimiento = montoMovimiento;
         this.conceptoMovimiento = conceptoMovimiento;
-        //this.monto = empresa.getBalance() + montoMovimiento;
+        empresa.setBalance((empresa.getBalance()) + montoMovimiento);
+        this.monto = empresa.getBalance();
         this.nombreEmpleado = empleado.getNombreEmpleado();
     }
 
@@ -38,6 +40,9 @@ public class MovimientoDinero {
         this.conceptoMovimiento = conceptoMovimiento;
     }
 
+    public double getMonto() { return monto; }
+
+    public String getNombreEmpleado() { return nombreEmpleado; }
 
     //toString
 
