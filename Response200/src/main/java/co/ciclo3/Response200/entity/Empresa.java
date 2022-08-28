@@ -8,6 +8,16 @@ public class Empresa {
     private int telEmpresa;
     private double balance;
 
+    //Constructor
+    public Empresa(long nitEmpresa, String nomEmpresa, String dirEmpresa, int telEmpresa, double balance) {
+        this.nitEmpresa = nitEmpresa;
+        this.nomEmpresa = nomEmpresa;
+        this.dirEmpresa = dirEmpresa;
+        this.telEmpresa = telEmpresa;
+        this.balance = balance;
+    }
+
+    //setters and getters
     public long getNitEmpresa() {
         return nitEmpresa;
     }
@@ -45,6 +55,7 @@ public class Empresa {
     public void setBalance(double balance) { this.balance = balance; }
 
 
+    //toString
     @Override
     public String toString() {
         return "Empresa{" +

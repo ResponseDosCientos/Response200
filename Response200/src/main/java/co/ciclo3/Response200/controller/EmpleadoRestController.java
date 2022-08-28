@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class EmpleadoRestController {
 
+    /*
     @GetMapping("/empleado/{id}")
     public Empleado findById(@PathVariable long id) {
         Empleado empleado = new Empleado();
@@ -67,4 +68,6 @@ public class EmpleadoRestController {
         Empleado putEmpleado = findById(id);
     }
 
+
+     */
 }

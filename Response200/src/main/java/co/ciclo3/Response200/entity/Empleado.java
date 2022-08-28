@@ -6,9 +6,18 @@ public class Empleado {
     private String nombreEmpleado;
     private String emailEmpleado;
     private String empresa;
-    private String rol;
+    private Rol rol;
 
+    //constructor
+    public Empleado(long idEmpleado, String nombreEmpleado, String emailEmpleado, String empresa, Rol rol) {
+        this.idEmpleado = idEmpleado;
+        this.nombreEmpleado = nombreEmpleado;
+        this.emailEmpleado = emailEmpleado;
+        this.empresa = empresa;
+        this.rol = rol;
+    }
 
+    //setter and getter
     public long getIdEmpleado() {
         return idEmpleado;
     }
@@ -41,13 +50,17 @@ public class Empleado {
         this.empresa = empresa;
     }
 
-    public String getRol() {
+
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
+
+
 
     @Override
     public String toString() {

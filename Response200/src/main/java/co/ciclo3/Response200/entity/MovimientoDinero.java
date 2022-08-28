@@ -2,6 +2,8 @@ package co.ciclo3.Response200.entity;
 
 public class MovimientoDinero {
 
+    private int idMovimiento;
+
     private double montoMovimiento;
 
     private String conceptoMovimiento;
@@ -14,7 +16,8 @@ public class MovimientoDinero {
 
 
     //Constructor
-    public MovimientoDinero(double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
+    public MovimientoDinero(int idMovimiento, double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
+        this.idMovimiento = idMovimiento;
         this.montoMovimiento = montoMovimiento;
         this.conceptoMovimiento = conceptoMovimiento;
         empresa.setBalance((empresa.getBalance()) + montoMovimiento);
@@ -24,6 +27,12 @@ public class MovimientoDinero {
 
 
     //Getter and Setter
+
+
+    public int getIdMovimiento() { return idMovimiento; }
+
+    public void setIdMovimiento(int idMovimiento) { this.idMovimiento = idMovimiento; }
+
     public double getMontoMovimiento() {
         return montoMovimiento;
     }
@@ -50,14 +59,11 @@ public class MovimientoDinero {
     @Override
     public String toString() {
         return "MovimientoDinero{" +
-                "montoMovimiento=" + montoMovimiento +
+                "idMovimiento=" + idMovimiento +
+                ", montoMovimiento=" + montoMovimiento +
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
                 ", monto=" + monto +
                 ", nombreEmpleado='" + nombreEmpleado + '\'' +
                 '}';
     }
-
-
-
-
 }
