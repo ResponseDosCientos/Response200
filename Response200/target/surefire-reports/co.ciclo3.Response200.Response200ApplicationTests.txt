@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: co.ciclo3.Response200.Response200ApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.608 s - in co.ciclo3.Response200.Response200ApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.513 s - in co.ciclo3.Response200.Response200ApplicationTests
