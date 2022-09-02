@@ -7,7 +7,7 @@ public class Empleado {
     private String emailEmpleado;
     private String empresa;
     private Rol rol;
-
+/*
     //constructor
     public Empleado(long idEmpleado, String nombreEmpleado, String emailEmpleado, String empresa, Rol rol) {
         this.idEmpleado = idEmpleado;
@@ -16,7 +16,7 @@ public class Empleado {
         this.empresa = empresa;
         this.rol = rol;
     }
-
+*/
     //setter and getter
     public long getIdEmpleado() {
         return idEmpleado;
