@@ -9,6 +9,7 @@ public class Empresa {
     private double balance;
 
     //Constructor
+    /*
     public Empresa(long nitEmpresa, String nomEmpresa, String dirEmpresa, int telEmpresa, double balance) {
         this.nitEmpresa = nitEmpresa;
         this.nomEmpresa = nomEmpresa;
@@ -16,7 +17,7 @@ public class Empresa {
         this.telEmpresa = telEmpresa;
         this.balance = balance;
     }
-
+*/
     //setters and getters
     public long getNitEmpresa() {
         return nitEmpresa;
