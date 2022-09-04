@@ -17,8 +17,11 @@ public class EmpleadoRestController {
     private IEmpleadoService empleadoService;
 
     @GetMapping("/empleado/{id}")
+//    public Empleado findById(@PathVariable long id) {
+//        return this.empleadoService.findById(id);
+//    }
     public Empleado findById(@PathVariable long id) {
-        return this.empleadoService.findById(id);
+        return empleadoService.findById(id);
     }
 
     @GetMapping("/empleado")
