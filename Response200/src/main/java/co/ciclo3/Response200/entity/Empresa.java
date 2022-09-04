@@ -1,5 +1,9 @@
 package co.ciclo3.Response200.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Empresas")
 public class Empresa {
 
     private long nitEmpresa;
