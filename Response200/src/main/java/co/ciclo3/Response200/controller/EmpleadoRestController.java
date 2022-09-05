@@ -42,6 +42,4 @@ public class EmpleadoRestController {
         empleadoService.deleteEmpleado(id);
     }
 
-
-
 }

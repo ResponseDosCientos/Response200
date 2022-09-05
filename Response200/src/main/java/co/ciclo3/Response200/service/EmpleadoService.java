@@ -3,10 +3,12 @@ package co.ciclo3.Response200.service;
 import co.ciclo3.Response200.entity.Empleado;
 import co.ciclo3.Response200.entity.Empresa;
 import co.ciclo3.Response200.entity.Rol;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EmpleadoService implements IEmpleadoService{
 
 

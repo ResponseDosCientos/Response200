@@ -6,10 +6,17 @@ import javax.persistence.*;
 @Table(name="Empresas")
 public class Empresa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "nit_empresa", nullable = false)
     private long nitEmpresa;
+    @Column(name = "nombre_empresa", nullable = false)
     private String nomEmpresa;
+    @Column(name = "direccion_empresa", nullable = false)
     private String dirEmpresa;
+    @Column(name = "telefono_empresa", nullable = false)
     private int telEmpresa;
+    @Column(name = "balance")
     private double balance;
 
     //Constructor

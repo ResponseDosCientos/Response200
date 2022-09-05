@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 public interface IEmpresaService {
-    public Empresa findByNit(@PathVariable long nit);
+    public Empresa findByNit(long nit);
 
     public List<Empresa> findAll();
 
