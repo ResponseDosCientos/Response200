@@ -1,29 +1,42 @@
 package co.ciclo3.Response200.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Movimientos_Dinero")
 public class MovimientoDinero {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_movimiento", nullable = false)
     private int idMovimiento;
 
+    @Column(name = "monto_movimiento", nullable = false)
     private double montoMovimiento;
 
+    @Column(name = "concepto_movimiento", nullable = false)
     private String conceptoMovimiento;
 
-    //Variable utilizada para representar el balance general de la empresa
-    private double monto;
-
     //Variable utilizada para representar el usuario que realiza el movimiento
-    private String nombreEmpleado;
+    @ManyToOne
+    @JoinColumn(name = "id_empleado", nullable = false)
+    private Empleado nombreEmpleado;
+    //private String nombreEmpleado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_empresa", nullable = false)
+    private Empresa idEmpresa;
 
 
     //Constructor
-    public MovimientoDinero(int idMovimiento, double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
-        this.idMovimiento = idMovimiento;
-        this.montoMovimiento = montoMovimiento;
-        this.conceptoMovimiento = conceptoMovimiento;
-        empresa.setBalance((empresa.getBalance()) + montoMovimiento);
-        this.monto = empresa.getBalance();
-        this.nombreEmpleado = empleado.getNombreEmpleado();
-    }
+//    public MovimientoDinero(int idMovimiento, double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
+//        this.idMovimiento = idMovimiento;
+//        this.montoMovimiento = montoMovimiento;
+//        this.conceptoMovimiento = conceptoMovimiento;
+//        empresa.setBalance((empresa.getBalance()) + montoMovimiento);
+//        this.monto = empresa.getBalance();
+//        this.nombreEmpleado = empleado.getNombreEmpleado();
+//    }
 
 
     //Getter and Setter
@@ -49,12 +62,19 @@ public class MovimientoDinero {
         this.conceptoMovimiento = conceptoMovimiento;
     }
 
-    public double getMonto() { return monto; }
+    public Empleado getNombreEmpleado() { return nombreEmpleado; }
 
-    public String getNombreEmpleado() { return nombreEmpleado; }
+    public void setNombreEmpleado(Empleado nombreEmpleado) {this.nombreEmpleado = nombreEmpleado;}
+
+    public Empresa getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
 
     //toString
-
 
     @Override
     public String toString() {
@@ -62,8 +82,8 @@ public class MovimientoDinero {
                 "idMovimiento=" + idMovimiento +
                 ", montoMovimiento=" + montoMovimiento +
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
-                ", monto=" + monto +
-                ", nombreEmpleado='" + nombreEmpleado + '\'' +
+                ", nombreEmpleado=" + nombreEmpleado +
+                ", idEmpresa=" + idEmpresa +
                 '}';
     }
 }

@@ -8,6 +8,8 @@ public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_empresa", nullable = false)
+    private long idEmpresa;
     @Column(name = "nit_empresa", nullable = false)
     private long nitEmpresa;
     @Column(name = "nombre_empresa", nullable = false)
@@ -30,6 +32,11 @@ public class Empresa {
     }
 */
     //setters and getters
+
+    public long getIdEmpresa() { return idEmpresa; }
+
+    public void setIdEmpresa(long idEmpresa) { this.idEmpresa = idEmpresa; }
+
     public long getNitEmpresa() {
         return nitEmpresa;
     }
@@ -68,10 +75,12 @@ public class Empresa {
 
 
     //toString
+
     @Override
     public String toString() {
         return "Empresa{" +
-                "nitEmpresa=" + nitEmpresa +
+                "idEmpresa=" + idEmpresa +
+                ", nitEmpresa=" + nitEmpresa +
                 ", nomEmpresa='" + nomEmpresa + '\'' +
                 ", dirEmpresa='" + dirEmpresa + '\'' +
                 ", telEmpresa=" + telEmpresa +
