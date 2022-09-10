@@ -13,7 +13,7 @@ public interface IEmpleadoService {
 
     public Empleado createEmpleado(Empleado empleado);
 
-    public Empleado updateEmpleado(long id, Empleado empleado);
+    public Empleado updateEmpleado(Empleado empleado);
 
     public void deleteEmpleado(long id);
 

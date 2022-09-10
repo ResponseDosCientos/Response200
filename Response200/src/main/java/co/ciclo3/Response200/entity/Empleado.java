@@ -1,13 +1,31 @@
 package co.ciclo3.Response200.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "empleados")
 public class Empleado {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_empleado")
     private long idEmpleado;
+
+    @Column(name = "nombre_empleado", nullable = false)
     private String nombreEmpleado;
+
+    @Column(name = "email_empleado", nullable = false)
     private String emailEmpleado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_empresa")
     private Empresa empresa;
+
+    @OneToOne
+    @JoinColumn(name = "id_profile")
     private Profile profile;
 
+    @Column(name = "rol")
     private Rol rol;
 /*
     //constructor
@@ -52,16 +70,21 @@ public class Empleado {
         this.empresa = empresa;
     }
 
-    public Profile getRol() {
+    public Profile getProfile() {
         return profile;
     }
 
-
-    public void setRol(Profile profile) {
+    public void setProfile(Profile profile) {
         this.profile = profile;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
 
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 
     @Override
     public String toString() {

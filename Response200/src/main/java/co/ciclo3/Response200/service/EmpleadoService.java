@@ -3,71 +3,45 @@ package co.ciclo3.Response200.service;
 import co.ciclo3.Response200.entity.Empleado;
 import co.ciclo3.Response200.entity.Empresa;
 import co.ciclo3.Response200.entity.Profile;
+import co.ciclo3.Response200.entity.Rol;
+import co.ciclo3.Response200.repository.IEmpleadoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpleadoService implements IEmpleadoService{
 
+    @Autowired
+    private IEmpleadoRepository empleadoRepository;
 
     @Override
     public Empleado findById(long id) {
-        Empleado empleado = new Empleado();
-        empleado.setIdEmpleado(id);
-        empleado.setNombreEmpleado("Carlos");
-        empleado.setEmailEmpleado("carlos@nose.com");
-        empleado.setEmpresa(new Empresa());
-        empleado.setRol(new Profile());
-        return empleado;
+        Optional<Empleado> empleado = empleadoRepository.findById((Long) id);
+        return empleado.get();
     }
 
     @Override
     public List<Empleado> findAll() {
-        List<Empleado> empleados = new ArrayList<Empleado>();
-        Empleado empleado1 = new Empleado();
-        empleado1.setIdEmpleado(1);
-        empleado1.setNombreEmpleado("Carlos");
-        empleado1.setEmailEmpleado("carlos@nose.com");
-        empleado1.setEmpresa(new Empresa());
-        empleado1.setRol(new Profile());
-        empleados.add(empleado1);
-        Empleado empleado2 = new Empleado();
-        empleado2.setIdEmpleado(2);
-        empleado2.setNombreEmpleado("Oscar");
-        empleado2.setEmailEmpleado("oscar@nose.com");
-        empleado2.setEmpresa(new Empresa());
-        empleado2.setRol(new Profile());
-        empleados.add(empleado2);
+        List<Empleado> empleados = (List<Empleado>) empleadoRepository.findAll();
         return empleados;
     }
 
     @Override
     public Empleado createEmpleado(Empleado empleado) {
-        Empleado newEmpleado = new Empleado();
-        newEmpleado.setIdEmpleado(empleado.getIdEmpleado());
-        newEmpleado.setNombreEmpleado(empleado.getNombreEmpleado());
-        newEmpleado.setEmailEmpleado(empleado.getEmailEmpleado());
-        newEmpleado.setEmpresa(empleado.getEmpresa());
-        newEmpleado.setRol(empleado.getRol());
-        return newEmpleado;
+        return empleadoRepository.save(empleado);
     }
 
     @Override
-    public Empleado updateEmpleado(long id, Empleado empleado) {
-        Empleado putEmpleado = findById(id);
-        putEmpleado.setIdEmpleado(empleado.getIdEmpleado());
-        putEmpleado.setNombreEmpleado(empleado.getNombreEmpleado());
-        putEmpleado.setEmailEmpleado(empleado.getEmailEmpleado());
-        putEmpleado.setEmpresa(empleado.getEmpresa());
-        putEmpleado.setRol(empleado.getRol());
-        return putEmpleado;
+    public Empleado updateEmpleado(Empleado empleado) {
+        return empleadoRepository.save(empleado);
     }
 
     @Override
     public void deleteEmpleado(long id) {
-        Empleado deleteEmpleado = findById(id);
-
+        empleadoRepository.deleteById(id);
     }
 }
