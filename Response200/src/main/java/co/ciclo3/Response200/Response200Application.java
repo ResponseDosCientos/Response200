@@ -1,13 +1,7 @@
 package co.ciclo3.Response200;
 
-import co.ciclo3.Response200.entity.Empleado;
-import co.ciclo3.Response200.entity.Empresa;
-import co.ciclo3.Response200.entity.MovimientoDinero;
-import co.ciclo3.Response200.entity.Rol;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.sound.midi.Soundbank;
 
 @SpringBootApplication
 public class Response200Application {

@@ -5,7 +5,9 @@ public class Empleado {
     private long idEmpleado;
     private String nombreEmpleado;
     private String emailEmpleado;
-    private String empresa;
+    private Empresa empresa;
+    private Profile profile;
+
     private Rol rol;
 /*
     //constructor
@@ -42,22 +44,21 @@ public class Empleado {
         this.emailEmpleado = emailEmpleado;
     }
 
-    public String getEmpresa() {
+    public Empresa getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(String empresa) {
+    public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
 
-
-    public Rol getRol() {
-        return rol;
+    public Profile getRol() {
+        return profile;
     }
 
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRol(Profile profile) {
+        this.profile = profile;
     }
 
 
@@ -69,7 +70,7 @@ public class Empleado {
                 ", nombreEmpleado='" + nombreEmpleado + '\'' +
                 ", emailEmpleado='" + emailEmpleado + '\'' +
                 ", empresa=" + empresa +
-                ", rol=" + rol +
+                ", rol=" + profile +
                 '}';
     }
 }
