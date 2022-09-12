@@ -1,6 +1,7 @@
 package co.ciclo3.Response200.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Empresas")
@@ -18,6 +19,10 @@ public class Empresa {
     private String dirEmpresa;
     @Column(name = "telefono_empresa", nullable = false)
     private int telEmpresa;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<Empleado> listaEmpleados;
+
     @Column(name = "balance")
     private double balance;
 
@@ -67,6 +72,14 @@ public class Empresa {
 
     public void setTelEmpresa(int telEmpresa) {
         this.telEmpresa = telEmpresa;
+    }
+
+    public List<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public void addEmpleado(Empleado empleado) {
+        listaEmpleados.add(empleado);
     }
 
     public double getBalance() { return balance; }

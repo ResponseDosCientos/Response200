@@ -14,9 +14,9 @@ public class EmpresaRestController {
     @Autowired
     private IEmpresaService empresaService;
 
-    @GetMapping("/empresa/{nit}")
-    public Empresa findByNit(@PathVariable long nit) {
-        return empresaService.findByNit(nit);
+    @GetMapping("/empresa/{id}")
+    public Empresa findByNit(@PathVariable long id) {
+        return empresaService.findById(id);
     }
     @GetMapping("/empresa")
     public List<Empresa> findAll(){
@@ -26,16 +26,13 @@ public class EmpresaRestController {
     public Empresa createEmpresa(@RequestBody Empresa empresa) {
         return this.empresaService.createEmpresa(empresa);
     }
-    @PutMapping("/empresa/{nit}")
-    public Empresa updateEmpresa(@PathVariable long nit, @RequestBody Empresa empresa){
-        return this.empresaService.updateEmpresa(nit, empresa);
+    @PutMapping("/empresa")
+    public Empresa updateEmpresa(@RequestBody Empresa empresa){
+        return this.empresaService.updateEmpresa(empresa);
     }
-
-
-    @DeleteMapping("/empresa/{nit}")
-    public void deleteEmpresa(@PathVariable long nit) {
-        empresaService.deleteEmpresa(nit);
+    @DeleteMapping("/empresa/{id}")
+    public void deleteEmpresa(@PathVariable long id) {
+        empresaService.deleteEmpresa(id);
     }
-
 
 }

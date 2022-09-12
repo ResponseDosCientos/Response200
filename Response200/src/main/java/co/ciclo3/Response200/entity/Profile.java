@@ -12,6 +12,10 @@ public class Profile {
     @Column(name = "id_profile", nullable = false)
     private long idProfile;
 
+    @OneToOne
+    @JoinColumn(name = "empleado")
+    private Empleado empleado;
+
     @Column(name = "phone", nullable = false)
     private String phone;
 
@@ -24,11 +28,15 @@ public class Profile {
     @Column(name = "update_At")
     private Date updateAt;
 
-//    public Profile(long idProfile, String phone, boolean estado) {
-//        this.idProfile = idProfile;
-//        this.phone = phone;
-//        this.estado = estado;
-//    }
+
+    public Profile(long idProfile, Empleado empleado, String phone, boolean estado, Date createAt, Date updateAt) {
+        this.idProfile = idProfile;
+        this.empleado = empleado;
+        this.phone = phone;
+        this.estado = estado;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
 
     public long getIdProfile() {
         return idProfile;
@@ -36,6 +44,14 @@ public class Profile {
 
     public void setIdProfile(long idProfile) {
         this.idProfile = idProfile;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
     public String getPhone() {
@@ -72,10 +88,12 @@ public class Profile {
 
     //ToString
 
+
     @Override
     public String toString() {
         return "Profile{" +
                 "idProfile=" + idProfile +
+                ", empleado=" + empleado +
                 ", phone='" + phone + '\'' +
                 ", estado=" + estado +
                 ", createAt=" + createAt +

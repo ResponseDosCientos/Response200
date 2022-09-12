@@ -21,22 +21,23 @@ public class Empleado {
     @JoinColumn(name = "id_empresa")
     private Empresa empresa;
 
-    @OneToOne
-    @JoinColumn(name = "id_profile")
+    @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL)
     private Profile profile;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     private Rol rol;
-/*
+
     //constructor
-    public Empleado(long idEmpleado, String nombreEmpleado, String emailEmpleado, String empresa, Rol rol) {
+    public Empleado(long idEmpleado, String nombreEmpleado, String emailEmpleado, Empresa empresa, Profile profile, Rol rol) {
         this.idEmpleado = idEmpleado;
         this.nombreEmpleado = nombreEmpleado;
         this.emailEmpleado = emailEmpleado;
         this.empresa = empresa;
+        this.profile = profile;
         this.rol = rol;
     }
-*/
+
     //setter and getter
     public long getIdEmpleado() {
         return idEmpleado;
@@ -93,7 +94,8 @@ public class Empleado {
                 ", nombreEmpleado='" + nombreEmpleado + '\'' +
                 ", emailEmpleado='" + emailEmpleado + '\'' +
                 ", empresa=" + empresa +
-                ", rol=" + profile +
+                ", profile=" + profile +
+                ", rol=" + rol +
                 '}';
     }
 }

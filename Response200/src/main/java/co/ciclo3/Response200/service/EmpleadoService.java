@@ -1,9 +1,7 @@
 package co.ciclo3.Response200.service;
 
 import co.ciclo3.Response200.entity.Empleado;
-import co.ciclo3.Response200.entity.Empresa;
-import co.ciclo3.Response200.entity.Profile;
-import co.ciclo3.Response200.entity.Rol;
+
 import co.ciclo3.Response200.repository.IEmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
