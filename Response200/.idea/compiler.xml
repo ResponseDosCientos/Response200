@@ -7,13 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Response200" />
-        <module name="ingresoegreso" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ingresoegreso" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Response200" options="" />
+      <module name="Response200" options="-parameters" />
       <module name="ingresoegreso" options="-parameters" />
     </option>
   </component>

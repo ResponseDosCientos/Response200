@@ -1,6 +1,8 @@
 package co.ciclo3.Response200.entity;
 
+
 public class Rol {
+
     private long idRol;
     private String descripcion;
     private boolean estado;
