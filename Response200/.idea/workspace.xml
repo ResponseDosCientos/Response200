@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff975ef-ebb9-4927-a087-bb6b1b4e068c" name="Changes" comment="Services de Empresa y Empleado">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/controller/EmpresaRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/controller/EmpresaRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/entity/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/entity/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/entity/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/entity/Empresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/entity/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/entity/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/repository/IEmpresaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/repository/IEmpresaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/service/EmpleadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/service/EmpleadoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/service/EmpresaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/service/EmpresaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/service/IEmpresaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/ciclo3/Response200/service/IEmpresaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Response200-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Response200-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Response200-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/Response200-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/ciclo3/Response200/entity/Empresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/ciclo3/Response200/entity/Empresa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -52,16 +53,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Doc Personales/Ciclo3UR/Response200/Response200/Response200&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/ayaay/OneDrive/Escritorio/java-ciclo-3/Prueba Repositorio/Response200",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="co.ciclo3.Response200.service" />
