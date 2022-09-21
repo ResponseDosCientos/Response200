@@ -1,10 +1,13 @@
 package co.gov.mintic.proyecto.gestion.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "empleados")
-public class Empleado {
+public class Empleado implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,12 +17,13 @@ public class Empleado {
     @javax.validation.constraints.NotEmpty
     @Column(name = "nombre_empleado")
     private String nombreEmpleado;
+    @Pattern(regexp = "[a-zA-Z0-9!#$%&'*_+-]([\\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\\/()=?¿!.,:;]|\\d)+[a-zA-Z0-9][\\.][a-zA-Z]{2,4}([\\.][a-zA-Z]{2})?" ,message = "Debe ser un correo electrónico válido")
     @Column(name = "email_empleado", unique = true)
     private String emailEmpleado;
 
-    @Enumerated(EnumType.STRING)
+    @NotNull
     @Column(name = "roleName")
-    private Enum_RoleName roleName;
+    private RoleName roleName;
     @Column(name = "estado")
     private boolean estado;;
     @ManyToOne
@@ -28,7 +32,9 @@ public class Empleado {
     @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL)
     private Profile profile;
 
-    @Column(name = "rol")
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinColumn(name = "id_rol")
     private Rol rol;
 
     //constructor
