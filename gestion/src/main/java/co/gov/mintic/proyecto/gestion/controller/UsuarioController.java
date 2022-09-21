@@ -1,14 +1,11 @@
-package co.gov.mintic.enterprise.empresa.thymeleaf.controller;
+package co.gov.mintic.proyecto.gestion.controller;
 
-import co.gov.mintic.enterprise.empresa.thymeleaf.entities.Rol;
-import co.gov.mintic.enterprise.empresa.thymeleaf.entities.Empresa;
-import co.gov.mintic.enterprise.empresa.thymeleaf.entities.Empleado;
-import co.gov.mintic.enterprise.empresa.thymeleaf.entities.MovimientoDinero;
-import co.gov.mintic.enterprise.empresa.thymeleaf.entities.Profile;
-import co.gov.mintic.enterprise.empresa.thymeleaf.service.IRolService;
-import co.gov.mintic.enterprise.empresa.thymeleaf.service.IEmpresaService;
-import co.gov.mintic.enterprise.empresa.thymeleaf.service.IEmpleadoService;
-import co.gov.mintic.enterprise.empresa.thymeleaf.service.IRolService;
+import co.gov.mintic.proyecto.gestion.entities.Empleado;
+import co.gov.mintic.proyecto.gestion.entities.Empresa;
+import co.gov.mintic.proyecto.gestion.entities.Rol;
+import co.gov.mintic.proyecto.gestion.service.IEmpleadoService;
+import co.gov.mintic.proyecto.gestion.service.IEmpresaService;
+import co.gov.mintic.proyecto.gestion.service.IRolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

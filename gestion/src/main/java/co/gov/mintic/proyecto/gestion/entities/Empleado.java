@@ -1,4 +1,4 @@
-package co.gov.mintic.enterprise.empresa.thymeleaf.entities;
+package co.gov.mintic.proyecto.gestion.entities;
 
 import javax.persistence.*;
 
@@ -11,26 +11,23 @@ public class Empleado {
     @Column(name = "id_empleado")
     private long idEmpleado;
 
+    @javax.validation.constraints.NotEmpty
     @Column(name = "nombre_empleado")
     private String nombreEmpleado;
-
     @Column(name = "email_empleado", unique = true)
     private String emailEmpleado;
 
-    @Column(name = "perfil")
-    private Enum_RoleName perfil;
-
+    @Enumerated(EnumType.STRING)
+    @Column(name = "roleName")
+    private Enum_RoleName roleName;
     @Column(name = "estado")
     private boolean estado;;
-
     @ManyToOne
     @JoinColumn(name = "id_empresa")
     private Empresa empresa;
-
     @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL)
     private Profile profile;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     private Rol rol;
 
