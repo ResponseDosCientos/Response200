@@ -1,22 +1,21 @@
-package co.gov.mintic.proyecto.gestion.service;
+package co.gov.mintic.proyecto.gestion.Service;
 
-import co.gov.mintic.proyecto.gestion.entities.Empresa;
-import co.gov.mintic.proyecto.gestion.repository.IEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import co.gov.mintic.proyecto.gestion.entities.Empresa;
 import org.springframework.stereotype.Service;
+import co.gov.mintic.proyecto.gestion.repository.IEmpresaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmpresaService implements IEmpresaService{
+public class EmpresaService implements IEmpresaService {
 
     @Autowired
     private IEmpresaRepository empresaRepository;
-
     @Override
     public Empresa findById(long id) {
-        Optional<Empresa> empresa = empresaRepository.findById((Long) id);
+        Optional<Empresa> empresa = empresaRepository.findById((long) id);
         return empresa.get();
     }
 
@@ -32,14 +31,13 @@ public class EmpresaService implements IEmpresaService{
     }
 
     @Override
-    public Empresa updateEmpresa(Empresa empresa) {
+    public Empresa updateEmpresa(int id, Empresa empresa) {
         return empresaRepository.save(empresa);
     }
 
     @Override
     public void deleteEmpresa(long id) {
-        empresaRepository.deleteById(id);
+        empresaRepository.deleteById((long)id);
     }
 
 }
-

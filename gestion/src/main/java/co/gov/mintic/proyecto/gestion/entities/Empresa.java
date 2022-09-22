@@ -4,101 +4,99 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="Empresas")
+@Table(name = "empresas")
 public class Empresa {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empresa", nullable = false)
-    private long idEmpresa;
-    @Column(name = "nit_empresa", nullable = false)
-    private long nitEmpresa;
+    private long idEmpresa; // variable de tipo objeto
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "documento_nit", unique = true)
+    private String nit;
+    @javax.validation.constraints.NotEmpty
     @Column(name = "nombre_empresa", nullable = false)
-    private String nomEmpresa;
-    @Column(name = "direccion_empresa", nullable = false)
-    private String dirEmpresa;
+    private String nombreEmpresa;
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "direccion", nullable = false)
+    private String direccion;
+    @javax.validation.constraints.NotEmpty
     @Column(name = "telefono_empresa", nullable = false)
-    private int telEmpresa;
+    private String telefono;
 
-    @OneToMany(mappedBy = "empresa")
-    private List<Empleado> listaEmpleados;
+    @Column(name = "estado", nullable = false)
+    private boolean estado;
 
-    @Column(name = "balance")
-    private double balance;
 
-    //Constructor
-    /*
-    public Empresa(long nitEmpresa, String nomEmpresa, String dirEmpresa, int telEmpresa, double balance) {
-        this.nitEmpresa = nitEmpresa;
-        this.nomEmpresa = nomEmpresa;
-        this.dirEmpresa = dirEmpresa;
-        this.telEmpresa = telEmpresa;
-        this.balance = balance;
-    }
-*/
-    //setters and getters
-
-    public long getIdEmpresa() { return idEmpresa; }
-
-    public void setIdEmpresa(long idEmpresa) { this.idEmpresa = idEmpresa; }
-
-    public long getNitEmpresa() {
-        return nitEmpresa;
+    public Empresa(long idEmpresa, String nit, String nombreEmpresa, String direccion, String telefono, boolean estado) {
+        this.idEmpresa = idEmpresa;
+        this.nit = nit;
+        this.nombreEmpresa = nombreEmpresa;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.estado = estado;
     }
 
-    public void setNitEmpresa(long nitEmpresa) {
-        this.nitEmpresa = nitEmpresa;
+    public Empresa() {
+
+    }
+    public long getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public String getNomEmpresa() {
-        return nomEmpresa;
+    public void setIdEmpresa(long idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public void setNomEmpresa(String nomEmpresa) {
-        this.nomEmpresa = nomEmpresa;
+    public String getNit() {
+        return nit;
     }
 
-    public String getDirEmpresa() {
-        return dirEmpresa;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public void setDirEmpresa(String dirEmpresa) {
-        this.dirEmpresa = dirEmpresa;
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
     }
 
-    public int getTelEmpresa() {
-        return telEmpresa;
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
     }
 
-    public void setTelEmpresa(int telEmpresa) {
-        this.telEmpresa = telEmpresa;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public List<Empleado> getListaEmpleados() {
-        return listaEmpleados;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public void addEmpleado(Empleado empleado) {
-        listaEmpleados.add(empleado);
+    public String getTelefono() {
+        return telefono;
     }
 
-    public double getBalance() { return balance; }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-    public void setBalance(double balance) { this.balance = balance; }
+    public boolean getEstado() {
+        return estado;
+    }
 
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
-    //toString
 
     @Override
     public String toString() {
         return "Empresa{" +
                 "idEmpresa=" + idEmpresa +
-                ", nitEmpresa=" + nitEmpresa +
-                ", nomEmpresa='" + nomEmpresa + '\'' +
-                ", dirEmpresa='" + dirEmpresa + '\'' +
-                ", telEmpresa=" + telEmpresa +
-                ", balance=" + balance +
+                ", nit='" + nit + '\'' +
+                ", nombreEmpresa='" + nombreEmpresa + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", estado=" + estado +
                 '}';
     }
 }
-

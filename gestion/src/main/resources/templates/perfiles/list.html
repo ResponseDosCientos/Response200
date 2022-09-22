@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfiles</title>
+</head>
+<body>
+<h1>Lista de Perfiles</h1>
+<a th:href="@{/}">Home</a>
+<br>
+<a th:href="@{/perfiles/crear}">Nuevo Profile</a>
+<br>
+<table border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    <tr th:each="profile : ${perfiles}"   >
+        <td th:text="${profile.nombreProfile}"></td>
+        <td><a th:href="@{/perfiles/editar/} + ${profile.idProfile}" th:text="Editar"></a></td>
+        <td><a th:href="@{/perfiles/eliminar/} + ${profile.idProfile}" th:text="Eliminar"></a></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

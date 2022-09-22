@@ -1,56 +1,66 @@
 package co.gov.mintic.proyecto.gestion.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name="Movimientos_Dinero")
+@Table(name="movimientos")
 public class MovimientoDinero {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_movimiento", nullable = false)
-    private int idMovimiento;
+    private long idMovimientoDinero;
 
-    @Column(name = "monto_movimiento", nullable = false)
-    private double montoMovimiento;
-
-    @Column(name = "concepto_movimiento", nullable = false)
+    @Column(name = "monto", nullable = false)
+    private float montoMovimiento;
+    //     @javax.validation.constraints.NotEmpty
+    @Column(name = "concepto", nullable = false)
     private String conceptoMovimiento;
-
-    //Variable utilizada para representar el usuario que realiza el movimiento
     @ManyToOne
-    @JoinColumn(name = "id_empleado", nullable = false)
-    private Empleado nombreEmpleado;
-    //private String nombreEmpleado;
+    @JoinColumn(name = "id_empleado")
+    private Empleado empleado;
 
     @ManyToOne
-    @JoinColumn(name = "id_empresa", nullable = false)
-    private Empresa idEmpresa;
+    @JoinColumn(name = "id_empresa")
+    private Empresa empresa;
 
+    @ManyToOne
+    @JoinColumn (name= "id_profile")
+    private Profile profile;
 
-    //Constructor
-//    public MovimientoDinero(int idMovimiento, double montoMovimiento, String conceptoMovimiento, Empresa empresa, Empleado empleado) {
-//        this.idMovimiento = idMovimiento;
-//        this.montoMovimiento = montoMovimiento;
-//        this.conceptoMovimiento = conceptoMovimiento;
-//        empresa.setBalance((empresa.getBalance()) + montoMovimiento);
-//        this.monto = empresa.getBalance();
-//        this.nombreEmpleado = empleado.getNombreEmpleado();
-//    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name= "fecha",nullable = false)
+    private Date fecha;
 
+    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Profile profile, Date fecha) {
+        this.idMovimientoDinero = idMovimientoDinero;
+        this.montoMovimiento = montoMovimiento;
+        this.conceptoMovimiento = conceptoMovimiento;
+        this.empleado = empleado;
+        this.empresa = empresa;
+        this.profile = profile;
+        this.fecha = fecha;
+    }
 
-    //Getter and Setter
+    public MovimientoDinero() {
 
+    }
 
-    public int getIdMovimiento() { return idMovimiento; }
+    public long getIdMovimientoDinero() {
+        return idMovimientoDinero;
+    }
 
-    public void setIdMovimiento(int idMovimiento) { this.idMovimiento = idMovimiento; }
+    public void setIdMovimientoDinero(long idMovimientoDinero) {
+        this.idMovimientoDinero = idMovimientoDinero;
+    }
 
-    public double getMontoMovimiento() {
+    public float getMontoMovimiento() {
         return montoMovimiento;
     }
 
-    public void setMontoMovimiento(long montoMovimiento) {
+    public void setMontoMovimiento(float montoMovimiento) {
         this.montoMovimiento = montoMovimiento;
     }
 
@@ -62,28 +72,48 @@ public class MovimientoDinero {
         this.conceptoMovimiento = conceptoMovimiento;
     }
 
-    public Empleado getNombreEmpleado() { return nombreEmpleado; }
-
-    public void setNombreEmpleado(Empleado nombreEmpleado) {this.nombreEmpleado = nombreEmpleado;}
-
-    public Empresa getIdEmpresa() {
-        return idEmpresa;
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void setIdEmpresa(Empresa idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
-    //toString
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
     @Override
     public String toString() {
         return "MovimientoDinero{" +
-                "idMovimiento=" + idMovimiento +
+                "idMovimientoDinero=" + idMovimientoDinero +
                 ", montoMovimiento=" + montoMovimiento +
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
-                ", nombreEmpleado=" + nombreEmpleado +
-                ", idEmpresa=" + idEmpresa +
+                ", empleado=" + empleado +
+                ", empresa=" + empresa +
+                ", profile=" + profile +
+                ", fecha=" + fecha +
                 '}';
     }
 }

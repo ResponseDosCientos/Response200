@@ -1,43 +1,33 @@
 package co.gov.mintic.proyecto.gestion.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+
+import java.util.List;
 
 @Entity
-@Table(name = "profiles")
+@Table(name="perfiles")
 public class Profile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_profile", nullable = false)
+    @Column(name="id_profile",nullable = false)
     private long idProfile;
+    @javax.validation.constraints.NotEmpty
+    @Column(name="nombre",nullable = false)
+    private String nombreProfile;
 
-    @OneToOne
-    @JoinColumn(name = "empleado")
-    private Empleado empleado;
+    @Column(name="estado",nullable = false)
+    private boolean estadoProfile;
 
-    @Column(name = "phone", nullable = false)
-    private String phone;
-
-    @Column(name = "estado")
-    private boolean estado;
-
-    @Column(name = "create_At")
-    private Date createAt;
-
-    @Column(name = "update_At")
-    private Date updateAt;
-
-/*
-    public Profile(long idProfile, Empleado empleado, String phone, boolean estado, Date createAt, Date updateAt) {
+    public Profile(long idProfile, String nombreProfile, boolean estadoProfile) {
         this.idProfile = idProfile;
-        this.empleado = empleado;
-        this.phone = phone;
-        this.estado = estado;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
+        this.nombreProfile = nombreProfile;
+        this.estadoProfile = estadoProfile;
     }
-*/
+
+    public Profile() {
+
+    }
+
     public long getIdProfile() {
         return idProfile;
     }
@@ -46,58 +36,29 @@ public class Profile {
         this.idProfile = idProfile;
     }
 
-    public Empleado getEmpleado() {
-        return empleado;
+    public String getNombreProfile() {
+        return nombreProfile;
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+    public void setNombreProfile(String nombreProfile) {
+        this.nombreProfile = nombreProfile;
     }
 
-    public String getPhone() {
-        return phone;
+    public boolean isEstadoProfile() {
+        return estadoProfile;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setEstadoProfile(boolean estadoProfile) {
+        this.estadoProfile = estadoProfile;
     }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    //ToString
 
 
     @Override
     public String toString() {
         return "Profile{" +
                 "idProfile=" + idProfile +
-                ", empleado=" + empleado +
-                ", phone='" + phone + '\'' +
-                ", estado=" + estado +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
+                ", nombreProfile='" + nombreProfile + '\'' +
+                ", estadoProfile=" + estadoProfile +
                 '}';
     }
 }

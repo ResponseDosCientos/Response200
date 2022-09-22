@@ -3,9 +3,9 @@ package co.gov.mintic.proyecto.gestion.controller;
 import co.gov.mintic.proyecto.gestion.entities.Empleado;
 import co.gov.mintic.proyecto.gestion.entities.Empresa;
 import co.gov.mintic.proyecto.gestion.entities.Rol;
-import co.gov.mintic.proyecto.gestion.service.IEmpleadoService;
-import co.gov.mintic.proyecto.gestion.service.IEmpresaService;
-import co.gov.mintic.proyecto.gestion.service.IRolService;
+import co.gov.mintic.proyecto.gestion.Service.IEmpleadoService;
+import co.gov.mintic.proyecto.gestion.Service.IEmpresaService;
+import co.gov.mintic.proyecto.gestion.Service.IRolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,7 +77,7 @@ public class UsuarioController {
     @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
     public String deleteEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deleteEmpleado");
-        empleadoService.deleteEmpleado(id);
+        empleadoService.deletEmpleado(id);
         return "redirect:/empleados/listar";
     }
 }

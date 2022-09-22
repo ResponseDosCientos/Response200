@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Movimiento de Dinero</title>
+</head>
+<body>
+
+<h1>Nuevo Movimiento de Dinero</h1>
+
+
+<form id="customer-form"  th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
+    <input type="hidden" name="idMovimientoDinero" th:field="*{idMovimientoDinero}">
+    <label for="fecha">Fecha</label>
+    <input type="date" name="fecha" th:field="*{fecha}"/>
+<!--    <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Error fecha</span>-->
+    <br>
+    <label for="empresa">Empresa </label>
+     <select th:field="*{empresa.idEmpresa}" name="empresa">
+        <option value="0" selected>Seleccione empresa</option>
+        <option th:each="empresa: ${empresas}"
+                th:value="${empresa.idEmpresa}"
+                th:text="${empresa.nombreEmpresa}">
+        </option>
+    </select>
+
+<!--    <span th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Error empresa</span>-->
+    <br>
+    <label for="concepto">Concepto</label>
+    <input type="text" name="concepto" th:field="*{conceptoMovimiento}"/>
+<!--    <span th:if="${#fields.hasErrors('conceptoMovimiento')}" th:errors="*{conceptoMovimiento}">Error concepto</span>-->
+    <br>
+    <label for="profile">Profile </label>
+    <select th:field="*{profile.idProfile}" name="profile">
+        <option value="0" selected>Seleccione profile</option>
+        <option th:each="profile: ${perfiles}"
+                th:value="${profile.idProfile}"
+                th:text="${profile.nombreProfile}"
+        ></option>
+    </select>
+<!--    <span th:if="${#fields.hasErrors('perfiles')}" th:errors="*{perfiles}">Error profile</span>-->
+    <br>
+    <label for="monto">Monto</label>
+    <input type="number" name="monto" th:field="*{montoMovimiento}"/>
+<!--    <span th:if="${#fields.hasErrors('montoMovimiento')}" th:errors="*{montoMovimiento}">Error monto</span>-->
+    <br>
+    <input type="submit" name="guardar" value="Guardar">
+</form>
+</body>
+</html>
