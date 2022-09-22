@@ -1,4 +1,4 @@
-package co.gov.mintic.proyecto.gestion.service;
+package co.gov.mintic.proyecto.gestion.Service;
 
 import co.gov.mintic.proyecto.gestion.entities.Rol;
 
@@ -10,7 +10,7 @@ public interface IRolService {
 
     public List<Rol> findAll();
 
-    public Rol createRol(Rol rol);
+    public Rol createRol (Rol rol);
 
     public Rol updateRol(int id, Rol rol);
 

@@ -7,47 +7,44 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "empleados")
-public class Empleado implements Serializable {
+public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_empleado")
+    @Column(name = "id_empleado", nullable = false)
     private long idEmpleado;
 
     @javax.validation.constraints.NotEmpty
-    @Column(name = "nombre_empleado")
-    private String nombreEmpleado;
+    @Column(name = "documento", unique = true)
+    private String documento;
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "nombre",nullable = false)
+    private String nombre;
     @Pattern(regexp = "[a-zA-Z0-9!#$%&'*_+-]([\\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\\/()=?¿!.,:;]|\\d)+[a-zA-Z0-9][\\.][a-zA-Z]{2,4}([\\.][a-zA-Z]{2})?" ,message = "Debe ser un correo electrónico válido")
-    @Column(name = "email_empleado", unique = true)
-    private String emailEmpleado;
+    @Column(name = "correo", nullable = false)
+    private String correo;
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "direccion", nullable = false)
+    private String direccion;
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "telefono", nullable = false)
+    private String telefono;
+
+    @ManyToOne
+    @JoinColumn(name = "id_rol")
+    private Rol rol;
 
     @NotNull
     @Column(name = "roleName")
     private RoleName roleName;
+
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$" , message = "La contraseña debe contener minimo 8 caracteres, máximo 15, una letra mayúscula, una letra minuscula, un número, un caracter especial y sin espacios en blanco")
+    @Column(name = "clave", nullable = false)
+    private String clave;
+
     @Column(name = "estado")
-    private boolean estado;;
-    @ManyToOne
-    @JoinColumn(name = "id_empresa")
-    private Empresa empresa;
-    @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL)
-    private Profile profile;
+    private boolean estado;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name = "id_rol")
-    private Rol rol;
-
-    //constructor
-    /*public Empleado(long idEmpleado, String nombreEmpleado, String emailEmpleado, Empresa empresa, Profile profile, Rol rol) {
-        this.idEmpleado = idEmpleado;
-        this.nombreEmpleado = nombreEmpleado;
-        this.emailEmpleado = emailEmpleado;
-        this.empresa = empresa;
-        this.profile = profile;
-        this.rol = rol;
-    }
-*/
-    //setter and getter
 
     public long getIdEmpleado() {
         return idEmpleado;
@@ -57,44 +54,44 @@ public class Empleado implements Serializable {
         this.idEmpleado = idEmpleado;
     }
 
-    public String getNombreEmpleado() {
-        return nombreEmpleado;
+    public String getDocumento() {
+        return documento;
     }
 
-    public void setNombreEmpleado(String nombreEmpleado) {
-        this.nombreEmpleado = nombreEmpleado;
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
-    public String getEmailEmpleado() {
-        return emailEmpleado;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEmailEmpleado(String emailEmpleado) {
-        this.emailEmpleado = emailEmpleado;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public Rol getRol() {
@@ -105,19 +102,42 @@ public class Empleado implements Serializable {
         this.rol = rol;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
 
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
+    public RoleName getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(RoleName roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
     @Override
     public String toString() {
         return "Empleado{" +
                 "idEmpleado=" + idEmpleado +
-                ", nombreEmpleado='" + nombreEmpleado + '\'' +
-                ", emailEmpleado='" + emailEmpleado + '\'' +
-                ", estado=" + estado +
-                ", empresa=" + empresa +
-                ", profile=" + profile +
+                ", documento='" + documento + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
                 ", rol=" + rol +
+                ", roleName=" + roleName +
+                ", clave='" + clave + '\'' +
+                ", estado=" + estado +
                 '}';
     }
 }
-

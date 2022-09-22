@@ -39,7 +39,7 @@
         <label for="perfil">Perfil </label>
         <select th:field="*{perfil}" name="perfil">
             <option  value="0" selected>Seleccione el tipo de perfil</option>
-            <option th:each="perfil : ${T(co.gov.mintic.tesoreria.thymeleaf.entities.Perfil).values()}"
+            <option th:each="perfil : ${T(co.gov.mintic.proyecto.gestion.entities.Perfil).values()}"
                     th:value="${perfil}"
                     th:text="${perfil}">
             </option>

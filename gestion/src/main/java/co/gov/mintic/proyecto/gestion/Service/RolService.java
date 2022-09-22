@@ -1,18 +1,20 @@
-package co.gov.mintic.proyecto.gestion.service;
+package co.gov.mintic.proyecto.gestion.Service;
 
-import co.gov.mintic.proyecto.gestion.entities.Rol;
-import co.gov.mintic.proyecto.gestion.repository.IRolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import co.gov.mintic.proyecto.gestion.entities.Rol;
 import org.springframework.stereotype.Service;
+import co.gov.mintic.proyecto.gestion.repository.IRolRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RolService implements IRolService{
+public class RolService implements IRolService {
 
     @Autowired
     private IRolRepository rolRepository;
+
     @Override
     public Rol findById(int id) {
         Optional<Rol> rol = rolRepository.findById((long) id);

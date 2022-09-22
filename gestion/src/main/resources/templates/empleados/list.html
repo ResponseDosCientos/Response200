@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de empleados</title>
+</head>
+<body>
+<h1>Lista de empleados</h1>
+<a th:href="@{/}">Home</a>
+<br>
+<a th:href="@{/empleados/modificar}">Nuevo empleado</a>
+<br>
+<table border="1">
+    <tr>
+        <th>Documento</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    <tr th:each="empleado : ${empleados}">
+        <td th:text="${empleado.documento}"></td>
+        <td th:text="${empleado.nombre}"></td>
+        <td th:text="${empleado.direccion}"></td>
+        <td th:text="${empleado.telefono}"></td>
+        <td th:text="${empleado.correo}"></td>
+        <td><a th:href="@{/empleados/editar/} + ${empleado.idEmpleado}" th:text="Editar"></a></td>
+        <td><a th:href="@{/empleados/eliminar/} + ${empleado.idEmpleado}" th:text="Eliminar"></a></td>
+
+    </tr>
+</table>
+</body>
+</html>

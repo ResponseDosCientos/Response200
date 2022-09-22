@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfiles</title>
+</head>
+<body>
+<h1>Datos de Perfiles</h1>
+<form th:action="@{/perfiles/guardar}" method="post" th:object="${perfiles}">
+    <input type="hidden" name="idProfile" th:field="*{idProfile}">
+    <label for="nombreProfile">Nombre </label>
+    <input type="text" name="nombre" th:field="*{nombreProfile}"/>
+    <span th:if="${#fields.hasErrors('nombreProfile')}" th:errors="*{nombreProfile}">Error Nombre del perfil</span>
+    <br>
+    <input type="submit" name="guardar" value="Guardar">
+
+</form>
+</body>
+</html>

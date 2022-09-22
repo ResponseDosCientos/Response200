@@ -3,19 +3,21 @@ package co.gov.mintic.proyecto.gestion.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="roles")
+@Table(name = "roles")
 public class Rol {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rol", nullable = false)
     private long idRol;
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false)
     private boolean estado;
 
+
     public long getIdRol() {
-        return idRol;
+        return this.idRol;
     }
 
     public void setIdRol(long idRol) {
@@ -23,7 +25,7 @@ public class Rol {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
@@ -31,7 +33,7 @@ public class Rol {
     }
 
     public boolean isEstado() {
-        return estado;
+        return this.estado;
     }
 
     public void setEstado(boolean estado) {
