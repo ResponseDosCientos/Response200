@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="9ff975ef-ebb9-4927-a087-bb6b1b4e068c" name="Changes" comment="Services de Empresa y Empleado">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
@@ -16,6 +17,11 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+=======
+    <list default="true" id="0bc3f569-50da-447b-910f-7eb731baa894" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> master
     </list>
 =======
     <list default="true" id="9ff975ef-ebb9-4927-a087-bb6b1b4e068c" name="Changes" comment="Services de Empresa y Empleado" />
@@ -85,11 +91,20 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+<<<<<<< HEAD
     "last_opened_file_path": "C:/Users/ayaay/OneDrive/Escritorio/java-ciclo-3/Clase/MisionTIC-2022-Ciclo-3/ingresoegreso/pom.xml",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.settings.project.maven.archetype.catalogs"
+=======
+    "last_opened_file_path": "C:/Users/ayaay/OneDrive/Escritorio/java-ciclo-3/Prueba Repositorio/Response200/pom.xml",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+>>>>>>> master
 =======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
@@ -108,6 +123,7 @@
       <recent name="co.ciclo3.Response200.entity" />
     </key>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Application.IngresoegresoApplication">
     <configuration name="IngresoegresoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.gov.mintic.cartera.ingresoegreso.IngresoegresoApplication" />
@@ -122,6 +138,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+>>>>>>> 0b68d286c1f77251e8934e5e0901d67125e5e3aa
+  <component name="RunManager">
+>>>>>>> master
     <configuration name="Response200Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.ciclo3.Response200.Response200Application" />
       <module name="Response200" />
