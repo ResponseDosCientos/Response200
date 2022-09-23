@@ -14,21 +14,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Controller
+@RestController
 public class EmpresaController {
 
     @Autowired
     private IEmpresaService empresaService;
     private final Logger LOG = Logger.getLogger("" + EmpresaController.class);
 
-    @GetMapping("/empresas/list")
+    @GetMapping("/empresas")
     public String getListEmpresas(Model model) {
         LOG.log(Level.INFO, "getListEmpresas");
         List<Empresa> empresas = empresaService.findAll();
         for (Empresa empr : empresas)
             System.out.println(empr.toString());
         model.addAttribute("empresas", empresas);
-        return "empresas/list";
+        return "empresas";
     }
 
     @GetMapping("/empresas/crear")
