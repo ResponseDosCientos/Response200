@@ -5,8 +5,15 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Clase/MisionTIC-2022-Ciclo-3/ingresoegreso/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+<<<<<<< HEAD
+=======
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+>>>>>>> 0b68d286c1f77251e8934e5e0901d67125e5e3aa
 </project>
