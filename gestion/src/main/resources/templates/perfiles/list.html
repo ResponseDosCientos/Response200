@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Perfiles</title>
@@ -13,8 +13,8 @@
 <table border="1">
     <tr>
         <th>Nombre</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
     </tr>
     <tr th:each="profile : ${perfiles}"   >
         <td th:text="${profile.nombreProfile}"></td>
