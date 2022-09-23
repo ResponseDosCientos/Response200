@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
+<<<<<<< HEAD
 
     <h1>Menu</h1>
     <p th:text="${mensaje}"> lista </p>
@@ -30,6 +31,23 @@
                     <p class="card-text">Descripción.</p>
                     <a th:href="@{/empleados/listar}" class="btn btn-primary">Ingresar</a>
                 </div>
+=======
+<header class="container" th:replace="layout/plantilla :: header"></header>
+<h4>Menu</h4>
+<p th:text="${mensaje}"> lista </p>
+
+</ul>
+<div class="container text-center">
+    <div class="row g-5">
+        <div class="col-2">
+            <div class="p-5 border bg-light"><a th:href="@{/empleados/listar}">Sistema de Gestión de Empleados</a></div>
+        </div>
+        <div class="col-2">
+            <div class="p-5 border bg-light"><a th:href="@{/empresas}">Sistema de Gestión de Empresas</a></div>
+        </div>
+        <div class="col-2">
+            <div class="p-5 border bg-light"><a th:href="@{/movimientos/list}">Sistema de Gestión de Movimientos</a>
+>>>>>>> development
             </div>
         </div>
 <<<<<<< HEAD

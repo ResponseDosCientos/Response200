@@ -5,6 +5,31 @@
     <title>Login</title>
 </head>
 <body>
+<<<<<<< HEAD
   <h1>Login</h1>
+=======
+<br><br><br>
+<h4 class="modal-dialog text-center ">Sistema de Gestión de Ingresos y Gastos</h4>
+<br><br><br><br>
+
+<head>
+    <header th:replace="layout/plantilla :: header"></header>
+    <h1>Login</h1>
+    <form method="post" th:action="@{/login}">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <input type="submit" value="login">
+    </form>
+    <footer th:replace="layout/plantilla :: footer"></footer>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
+
+</head>
+
+>>>>>>> development
 </body>
 </html>

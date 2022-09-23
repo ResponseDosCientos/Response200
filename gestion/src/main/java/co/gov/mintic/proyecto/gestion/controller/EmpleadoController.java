@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Controller
+@RestController
 public class EmpleadoController {
 
     @Autowired
@@ -36,7 +36,10 @@ public class EmpleadoController {
     private final Logger LOG = Logger.getLogger("" + EmpleadoController.class);
     private Validator validator;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
     @GetMapping("/empleados/listar")
     public String getListEmpleados(Model model) {
         LOG.log(Level.INFO,"getListEmpleados");

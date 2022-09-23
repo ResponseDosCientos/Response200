@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Lista de movimientos</title>
@@ -18,8 +18,8 @@
         <th>Profile</th>
         <th>Monto</th>
         <th>Empleado</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
     </tr>
     <tr th:each="movimiento: ${movimientos}">
         <td th:text="${#dates.format(movimiento.fecha, 'dd-MMM-yyyy')}"></td>
@@ -29,7 +29,7 @@
         <td th:text="${#numbers.formatDecimal(movimiento.montoMovimiento, 0, 'POINT', 0, 'COMMA')}"></td>
         <td th:text="${movimiento.empleado}"></td>
         <td><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}" th:text="Editar"></a></td>
-        <td><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" th:text="Eliminar"></a></td>
+        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" th:text="Eliminar"></a></td>
     </tr>
 </table>
 </body>

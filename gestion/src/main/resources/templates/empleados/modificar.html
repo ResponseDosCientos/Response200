@@ -21,6 +21,10 @@
     <input type="text" name="pass" th:field="*{clave}"/>
     <span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">Error clave</span>
     <br>
+    <label for="username">Username </label>
+    <input type="text" name="username" th:field="*{username}"/>
+    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error username</span>
+    <br>
     <label for="rol">Rol </label>
     <select th:field="*{rol.idRol}" name="rol">
         <option value="0" selected>Seleccione rol</option>
