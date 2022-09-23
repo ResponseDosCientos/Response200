@@ -1,11 +1,29 @@
 package co.ciclo3.Response200.entity;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name="Empresas")
 public class Empresa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_empresa", nullable = false)
+    private long idEmpresa;
+    @Column(name = "nit_empresa", nullable = false)
     private long nitEmpresa;
+    @Column(name = "nombre_empresa", nullable = false)
     private String nomEmpresa;
+    @Column(name = "direccion_empresa", nullable = false)
     private String dirEmpresa;
+    @Column(name = "telefono_empresa", nullable = false)
     private int telEmpresa;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<Empleado> listaEmpleados;
+
+    @Column(name = "balance")
     private double balance;
 
     //Constructor
@@ -19,6 +37,11 @@ public class Empresa {
     }
 */
     //setters and getters
+
+    public long getIdEmpresa() { return idEmpresa; }
+
+    public void setIdEmpresa(long idEmpresa) { this.idEmpresa = idEmpresa; }
+
     public long getNitEmpresa() {
         return nitEmpresa;
     }
@@ -51,16 +74,26 @@ public class Empresa {
         this.telEmpresa = telEmpresa;
     }
 
+    public List<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public void addEmpleado(Empleado empleado) {
+        listaEmpleados.add(empleado);
+    }
+
     public double getBalance() { return balance; }
 
     public void setBalance(double balance) { this.balance = balance; }
 
 
     //toString
+
     @Override
     public String toString() {
         return "Empresa{" +
-                "nitEmpresa=" + nitEmpresa +
+                "idEmpresa=" + idEmpresa +
+                ", nitEmpresa=" + nitEmpresa +
                 ", nomEmpresa='" + nomEmpresa + '\'' +
                 ", dirEmpresa='" + dirEmpresa + '\'' +
                 ", telEmpresa=" + telEmpresa +

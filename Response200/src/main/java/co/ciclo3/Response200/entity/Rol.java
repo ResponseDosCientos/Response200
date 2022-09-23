@@ -1,5 +1,6 @@
 package co.ciclo3.Response200.entity;
 
+<<<<<<< HEAD
 
 public class Rol {
 
@@ -45,4 +46,8 @@ public class Rol {
                 ", estado=" + estado +
                 '}';
     }
+=======
+public enum Rol {
+    Administrador, Operario
+>>>>>>> cd7278eebb3a1a9a2877b78b0985b7f7791e80f4
 }

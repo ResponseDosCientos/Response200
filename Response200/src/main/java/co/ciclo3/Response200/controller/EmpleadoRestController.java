@@ -17,8 +17,11 @@ public class EmpleadoRestController {
     private IEmpleadoService empleadoService;
 
     @GetMapping("/empleado/{id}")
+//    public Empleado findById(@PathVariable long id) {
+//        return this.empleadoService.findById(id);
+//    }
     public Empleado findById(@PathVariable long id) {
-        return this.empleadoService.findById(id);
+        return empleadoService.findById(id);
     }
 
     @GetMapping("/empleado")
@@ -29,16 +32,14 @@ public class EmpleadoRestController {
     public Empleado createEmpleado(@RequestBody Empleado empleado) {
         return this.empleadoService.createEmpleado(empleado);
     }
-    @PutMapping("/empleado/{id}")
-    public Empleado updateEmpleado(@PathVariable long id, @RequestBody Empleado empleado){
+    @PutMapping("/empleado")
+    public Empleado updateEmpleado(@RequestBody Empleado empleado){
 
-        return this.empleadoService.updateEmpleado(id, empleado);
+        return this.empleadoService.updateEmpleado(empleado);
     }
     @DeleteMapping("/empleado/{id}")
     public void deleteEmpleado(@PathVariable long id) {
         empleadoService.deleteEmpleado(id);
     }
-
-
 
 }

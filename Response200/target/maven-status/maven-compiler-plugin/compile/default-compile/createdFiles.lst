@@ -1,12 +1,24 @@
 co\ciclo3\Response200\controller\EmpleadoRestController.class
 co\ciclo3\Response200\controller\EmpresaRestController.class
+<<<<<<< HEAD
+=======
+co\ciclo3\Response200\entity\Profile.class
+>>>>>>> cd7278eebb3a1a9a2877b78b0985b7f7791e80f4
 co\ciclo3\Response200\entity\MovimientoDinero.class
 co\ciclo3\Response200\entity\Rol.class
 co\ciclo3\Response200\entity\Empresa.class
 co\ciclo3\Response200\service\IEmpleadoService.class
+<<<<<<< HEAD
+=======
+co\ciclo3\Response200\repository\IEmpresaRepository.class
+>>>>>>> cd7278eebb3a1a9a2877b78b0985b7f7791e80f4
 co\ciclo3\Response200\service\IEmpresaService.class
 co\ciclo3\Response200\controller\MovimientoDineroRestcontroller.class
 co\ciclo3\Response200\entity\Empleado.class
 co\ciclo3\Response200\Response200Application.class
+<<<<<<< HEAD
+=======
+co\ciclo3\Response200\repository\IEmpleadoRepository.class
+>>>>>>> cd7278eebb3a1a9a2877b78b0985b7f7791e80f4
 co\ciclo3\Response200\service\EmpresaService.class
 co\ciclo3\Response200\service\EmpleadoService.class

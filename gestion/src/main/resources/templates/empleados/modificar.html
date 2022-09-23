@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos del empleado</title>
+</head>
+<body>
+<h1>Datos de empleado</h1>
+<form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}">
+    <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}">
+    <br>
+    <label for="nombre">Nombre y Apellido </label>
+    <input type="text" name="nombre" th:field="*{nombre}"/>
+    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error nombre</span>
+    <br>
+    <label for="correo">Correo </label>
+    <input type="email" name="correo" th:field="*{correo}"/>
+    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}">Error Correo</span>
+    <br>
+    <label for="pass">Password </label>
+    <input type="text" name="pass" th:field="*{clave}"/>
+    <span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">Error clave</span>
+    <br>
+    <label for="rol">Rol </label>
+    <select th:field="*{rol.idRol}" name="rol">
+        <option value="0" selected>Seleccione rol</option>
+        <option th:each="rol: ${roles}"
+                th:value="${rol.idRol}"
+                th:text="${rol.descripcion}"
+        ></option>
+    </select>
+    <span th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}">Error rol</span>
+    <br>
+    <label for="documento">documento </label>
+    <input type="text" name="documento" th:field="*{documento}"/>
+    <span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error cedula</span>
+    <br>
+    <label for="roleName"> Rol del Empleado </label>
+    <select th:field="*{roleName}" name="roleName">
+        <option value="" selected>Seleccione el rol del empleado</option>
+        <option th:each="roleName : ${T(co.gov.mintic.proyecto.gestion.entities.RoleName).values()}"
+                th:value="${roleName}"
+                th:text="${roleName}"
+        ></option>
+    </select>
+    <span th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Error rol del Empleado</span>
+    <br>
+    <label for="direccion">Dirección </label>
+    <input type="text" name="direccion" th:field="*{direccion}"/>
+    <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Dirección</span>
+    <br>
+    <label for="telefono">Telefono o Celular </label>
+    <input type="text" name="telefono" th:field="*{telefono}"/>
+    <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error Telefono</span>
+    <br>
+    <input type="submit" name="guardar" value="Guardar">
+</form>
+</body>
+</html>
