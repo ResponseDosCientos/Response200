@@ -39,6 +39,7 @@ public class MovimientoController {
 
     @GetMapping("/movimientos/list")
     public String getListmovimientos(Model model) {
+        System.out.println(IndexController.class + " - List");
         LOG.log(Level.INFO, "getListmovimientos");
         List<MovimientoDinero> movimientos = movimientoDineroService.findAll();
         for (MovimientoDinero movimientoDinero : movimientos)

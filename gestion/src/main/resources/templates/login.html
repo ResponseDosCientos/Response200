@@ -10,28 +10,23 @@
 <h4 class="modal-dialog text-center ">Sistema de Gestión de Ingresos y Gastos</h4>
 <br><br><br><br>
 
-<div class="modal-dialog text-center ">
-    <div class="col-sm-4 main-section">
-        <div class="modal-content">
-            <div class="col-12 logo-img">
-                <img src="img/logo.png">
-            </div>
-            <h5 class="">Ingreso al Sistema</h5><br>
-            <form action="" method="" class="col-12">
-                <div class="form-group" id="user-group">
-                    <input type="hidden" name="action" value="verificarlogin">
-                    <input type="email" class="form-control" name="idUsuario" placeholder="Correo"><br>
-                </div>
-                <div class="form-group" id="contrasena-group">
-                    <input type="password" class="form-control" name="clave" placeholder="Password"><br>
-                </div>
-                <button type="submit" class="btn btn-outline-success" id="lateral1"> Ingresar</button>
-            </form>
-            <br>
+<head>
+    <header th:replace="layout/plantilla :: header"></header>
+    <h1>Login</h1>
+    <form method="post" th:action="@{/login}">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <input type="submit" value="login">
+    </form>
+    <footer th:replace="layout/plantilla :: footer"></footer>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 
-        </div>
-    </div>
-</div>
+</head>
 
 </body>
 </html>

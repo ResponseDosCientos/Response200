@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Empresas</title>
@@ -22,16 +22,16 @@
             <th>Nombre</th>
             <th>Dirección</th>
             <th>Teléfono</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
         </tr>
         <tr th:each="empresa : ${empresas}" th:if="${empresa.estado}" class="table-secondary">
             <td th:text="${empresa.nit}"></td>
             <td th:text="${empresa.nombreEmpresa}"></td>
             <td th:text="${empresa.direccion}"></td>
             <td th:text="${empresa.telefono}"></td>
-            <td><a th:href="@{/empresas/editar/} + ${empresa.idEmpresa}" th:text="Editar"></a></td>
-            <td><a th:href="@{/empresas/eliminar/} + ${empresa.idEmpresa}" th:text="Eliminar"></a></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresas/editar/} + ${empresa.idEmpresa}" th:text="Editar"></a></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresas/eliminar/} + ${empresa.idEmpresa}" th:text="Eliminar"></a></td>
         </tr>
 
     </table>

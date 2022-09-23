@@ -13,13 +13,7 @@
 <header class="container" th:replace="layout/plantilla :: header"></header>
 <h4>Menu</h4>
 <p th:text="${mensaje}"> lista </p>
-<nav class="nav flex-column">
 
-    <a class="nav-link active" aria-current="page" href="#">Ingresos y Egresos</a>
-    <a class="nav-link" href="#">Usuarios</a>
-    <a class="nav-link" href="#">Empresas</a>
-
-</nav>
 </ul>
 <div class="container text-center">
     <div class="row g-5">
@@ -27,14 +21,14 @@
             <div class="p-5 border bg-light"><a th:href="@{/empleados/listar}">Sistema de Gestión de Empleados</a></div>
         </div>
         <div class="col-2">
-            <div class="p-5 border bg-light"><a th:href="@{/empresas/list}">Sistema de Gestión de Empresas</a></div>
+            <div class="p-5 border bg-light"><a th:href="@{/empresas}">Sistema de Gestión de Empresas</a></div>
         </div>
         <div class="col-2">
             <div class="p-5 border bg-light"><a th:href="@{/movimientos/list}">Sistema de Gestión de Movimientos</a>
             </div>
         </div>
         <div class="col-2">
-            <div class="p-5 border bg-light"><a th:href="@{/pefiles/list}">Sistema de Gestión de Perfiles</a>
+            <div class="p-5 border bg-light"><a th:href="@{/perfiles/list}">Sistema de Gestión de Perfiles</a>
             </div>
         </div>
     </div>

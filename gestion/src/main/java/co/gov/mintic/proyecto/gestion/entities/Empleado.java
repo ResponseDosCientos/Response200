@@ -23,6 +23,10 @@ public class Empleado {
     @Pattern(regexp = "[a-zA-Z0-9!#$%&'*_+-]([\\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\\/()=?¿!.,:;]|\\d)+[a-zA-Z0-9][\\.][a-zA-Z]{2,4}([\\.][a-zA-Z]{2})?" ,message = "Debe ser un correo electrónico válido")
     @Column(name = "correo", nullable = false)
     private String correo;
+
+    @javax.validation.constraints.NotEmpty
+    @Column(name = "username", unique = true)
+    private String username;
     @javax.validation.constraints.NotEmpty
     @Column(name = "direccion", nullable = false)
     private String direccion;
@@ -125,6 +129,15 @@ public class Empleado {
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "Empleado{" +
@@ -132,6 +145,7 @@ public class Empleado {
                 ", documento='" + documento + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", correo='" + correo + '\'' +
+                ", username='" + username + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", rol=" + rol +
