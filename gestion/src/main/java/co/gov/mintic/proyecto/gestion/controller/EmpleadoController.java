@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@RestController
+@Controller
 public class EmpleadoController {
 
     @Autowired
@@ -34,16 +34,14 @@ public class EmpleadoController {
     private final Logger LOG = Logger.getLogger("" + EmpleadoController.class);
 
     @GetMapping("/empleados/listar")
-    public String getListEmpleados(Model model) {
-        LOG.log(Level.INFO, "getListEmpleados");
+    public String getListEmpleados(Model model){
+        LOG.log(Level.INFO,"getListEmpleados");
         List<Empleado> empleados = empleadoService.findAll();
-        for (Empleado user : empleados)
-            System.out.println(user.toString());
         model.addAttribute("empleados", empleados);
         return "empleados/list";
     }
 
-    @GetMapping("/empleados/modificar")
+    @GetMapping("/empleados/crear")
     public String createEmpleado(Model modelo) {
         LOG.log(Level.INFO, "createEmpleado");
         //Empleado
@@ -69,7 +67,7 @@ public class EmpleadoController {
         }
         empleado.setEstado(true);
         empleado = empleadoService.createEmpleado(empleado);
-        return "redirect:/empleados/list";
+        return "redirect:/empleados/listar";
     }
 
     @RequestMapping(value = "/empleados/editar/{id}", method = RequestMethod.GET)
@@ -92,7 +90,7 @@ public class EmpleadoController {
     public String deletEmpleado(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deletEmpleado");
         empleadoService.deletEmpleado(id);
-        return "redirect:/empleados/list";
+        return "redirect:/empleados/listar";
     }
 
 

@@ -14,21 +14,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@RestController
+@Controller
 public class EmpresaController {
 
     @Autowired
     private IEmpresaService empresaService;
     private final Logger LOG = Logger.getLogger("" + EmpresaController.class);
 
-    @GetMapping("/empresas")
+    @GetMapping("/empresas/listar")
     public String getListEmpresas(Model model) {
         LOG.log(Level.INFO, "getListEmpresas");
         List<Empresa> empresas = empresaService.findAll();
         for (Empresa empr : empresas)
             System.out.println(empr.toString());
         model.addAttribute("empresas", empresas);
-        return "empresas";
+        return "empresas/list";
     }
 
     @GetMapping("/empresas/crear")
@@ -49,7 +49,7 @@ public class EmpresaController {
         }
         empresa.setEstado(true);
         empresa = empresaService.createEmpresa(empresa);
-        return "redirect:/empresas/list";
+        return "redirect:/empresas/listar";
     }
 
     @RequestMapping(value = "/empresas/editar/{id}", method = RequestMethod.GET)
@@ -66,7 +66,7 @@ public class EmpresaController {
     public String deleteEmpresa(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deleteEmpresa");
         empresaService.deleteEmpresa(id);
-        return "redirect:/empresas/list";
+        return "redirect:/empresas/listar";
     }
 
 }

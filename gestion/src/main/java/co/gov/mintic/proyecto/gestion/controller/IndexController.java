@@ -17,9 +17,10 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal User user){
         LOG.log(Level.INFO,"index");
-        System.out.println(user);
+        LOG.log(Level.INFO,"empleado : "+ user);
         var mensaje = "Bienvenidos al sistema de gestión de ingresos y egresos ";
         model.addAttribute("mensaje", mensaje);
+        model.addAttribute("user", user);
         return "index";
     }
 }

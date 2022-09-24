@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-@RestController
+@Controller
 public class MovimientoController {
 
     @Autowired
