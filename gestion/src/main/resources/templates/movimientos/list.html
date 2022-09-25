@@ -1,36 +1,105 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Lista de movimientos</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" >
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}" >
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
-<h1>Lista de movimientos</h1>
-<a th:href="@{/}">Home</a>
-<br>
-<a th:href="@{/movimientos/modificar}">Nuevo Movimiento</a>
-<br>
-<table border="1">
-    <tr>
-        <th>Fecha</th>
-        <th>Empresa
-        <th>Concepto</th>
-        <th>Profile</th>
-        <th>Monto</th>
-        <th>Empleado</th>
-        <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
-        <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
-    </tr>
-    <tr th:each="movimiento: ${movimientos}">
-        <td th:text="${#dates.format(movimiento.fecha, 'dd-MMM-yyyy')}"></td>
-        <td th:text="${movimiento.empresa.nombreEmpresa}"></td>
-        <td th:text="${movimiento.conceptoMovimiento}"></td>
-        <td th:text="${movimiento.profile.nombreProfile}"></td>
-        <td th:text="${#numbers.formatDecimal(movimiento.montoMovimiento, 0, 'POINT', 0, 'COMMA')}"></td>
-        <td th:text="${movimiento.empleado}"></td>
-        <td><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}" th:text="Editar"></a></td>
-        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" th:text="Eliminar"></a></td>
-    </tr>
-</table>
+<header th:replace="layout/plantilla :: header"></header>
+<section th:replace="layout/plantilla :: mainClientes"></section>
+
+<section>
+    <div class="container">
+        <div class="card">
+            <h4 class="card-title">Lista de movimientos</h4>
+            <div class="card-body">
+                <div th:if="${movimientos != null and !movimientos.empty}">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">Concepto</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+                            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="movimiento, contador : ${movimientos}">
+                            <td th:text="${contador.count}"></td>
+                            <td th:text="${movimiento.fecha}"></td>
+                            <td th:text="${movimiento.empresa.nombreEmpresa}"></td>
+                            <td th:text="${movimiento.empleado.nombre}"></td>
+                            <td th:text="${movimiento.conceptoMovimiento}"></td>
+                            <td th:text="${movimiento.montoMovimiento}"></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}" class="btn btn-primary">
+                                <i class="fa fa-edit"></i>
+                            </a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" class="btn btn-secondary">
+                                <i class="fa fa-remove"></i>
+                            </a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:if="${movimientos == null or movimientos.empty}">
+                    <span>No hay elementos en la lista</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-4 m-4">
+    <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="row">
+            <div class="col-md-4">
+                <a th:href="@{/movimientos/crear}" class="btn btn-primary btn-block">
+                    <i class="fas fa-plus"></i>
+                    <span>Agregar</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="agregarMovimiento" tabindex="-1" aria-labelledby="agregarMovimiento" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarMovimiento">Datos del Movimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customer-form" th:action="@{/movimientos/guardar}" method="post" th:object="${movimientos}" class="was-validated">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nombre">Nombre </label>
+                                <input type="text" name="nombre" class="form-control" required="true"/>
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

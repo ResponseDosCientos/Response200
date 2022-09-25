@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <header th:replace="layout/plantilla :: header"></header>
 <head>
     <!-- Comentarios -->
@@ -18,8 +19,9 @@
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Sistema de gestión de usuarios</h5>
-                    <p class="card-text">Descripción.</p>
+                    <h5 class="card-title">Sistema de gestión de empleados</h5>
+                    <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar usuarios nuevos u antiguos.</p>
+                    <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver los usuarios registrados.</p>
                     <a th:href="@{/empleados/listar}" class="btn btn-primary">Ingresar</a>
                 </div>
             </div>
@@ -38,7 +40,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Sistema de gestión de Movimientos</h5>
                     <p class="card-text">Descripción</p>
-                    <a th:href="@{/movimientos/list}" class="btn btn-primary">Ingresar</a>
+                    <a th:href="@{/movimientos/listar}" class="btn btn-primary">Ingresar</a>
                 </div>
             </div>
         </div>

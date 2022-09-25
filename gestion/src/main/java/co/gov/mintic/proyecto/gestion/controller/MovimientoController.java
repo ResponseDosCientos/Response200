@@ -37,7 +37,7 @@ public class MovimientoController {
 
     private final Logger LOG = Logger.getLogger("" + MovimientoController.class);
 
-    @GetMapping("/movimientos/list")
+    @GetMapping("/movimientos/listar")
     public String getListmovimientos(Model model) {
         System.out.println(IndexController.class + " - List");
         LOG.log(Level.INFO, "getListmovimientos");
@@ -48,17 +48,15 @@ public class MovimientoController {
         return "/movimientos/list";
     }
 
-    @GetMapping("/movimientos/modificar")
+    @GetMapping("/movimientos/crear")
     public String creatMovimiento(Model modelo) {
         LOG.log(Level.INFO, "creatMovimiento");
         MovimientoDinero movimiento = new MovimientoDinero();
         modelo.addAttribute("movimiento", movimiento);
-        List<Profile> perfiles = profileService.findAll();
-        modelo.addAttribute("perfiles", perfiles);
         List<Empresa> empresas = empresaService.findAll();
         modelo.addAttribute("empresas", empresas);
-        Empleado empleado = new Empleado();
-        modelo.addAttribute("empleado", empleado);
+        List<Empleado> empleados = empleadoService.findAll();
+        modelo.addAttribute("empleados", empleados);
         return "/movimientos/modificar";
     }
 
@@ -72,7 +70,7 @@ public class MovimientoController {
         }
 
         movimientoDinero = movimientoDineroService.creatMovimiento(movimientoDinero);
-        return "redirect:/movimientos/list";
+        return "redirect:/movimientos/listar";
     }
 
     @RequestMapping(value = "/movimientos/editar/{id}", method = RequestMethod.GET)
@@ -82,10 +80,10 @@ public class MovimientoController {
         MovimientoDinero movimientoDinero = movimientoDineroService.findById(id);
         System.out.println(movimientoDinero.toString());
         modelo.addAttribute("movimiento", movimientoDinero);
-        List<Profile> perfiles = profileService.findAll();
-        modelo.addAttribute("perfiles", perfiles);
         List<Empresa> empresas = empresaService.findAll();
         modelo.addAttribute("empresas", empresas);
+        List<Empleado> empleados = empleadoService.findAll();
+        modelo.addAttribute("empleados", empleados);
         return "/movimientos/modificar";
     }
 
@@ -93,6 +91,6 @@ public class MovimientoController {
     public String deletMovimiento(@PathVariable("id") long id, Model modelo) {
         LOG.log(Level.INFO, "deletMovimiento");
         movimientoDineroService.deletMovimiento(id);
-        return "redirect:/movimientos/list";
+        return "redirect:/movimientos/listar";
     }
 }

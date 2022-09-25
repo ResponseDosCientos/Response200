@@ -19,28 +19,27 @@ public class MovimientoDinero {
     @Column(name = "concepto", nullable = false)
     private String conceptoMovimiento;
     @ManyToOne
-    @JoinColumn(name = "id_empleado")
+    @JoinColumn(name = "nombreEmpleado")
     private Empleado empleado;
 
     @ManyToOne
-    @JoinColumn(name = "id_empresa")
+    @JoinColumn(name = "nombreEmpresa")
     private Empresa empresa;
 
-    @ManyToOne
-    @JoinColumn (name= "id_profile")
-    private Profile profile;
+    //@ManyToOne
+    //@JoinColumn (name= "id_profile")
+    //private Profile profile;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name= "fecha",nullable = false)
     private Date fecha;
 
-    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa, Profile profile, Date fecha) {
+    public MovimientoDinero(long idMovimientoDinero, float montoMovimiento, String conceptoMovimiento, Empleado empleado, Empresa empresa,  Date fecha) {
         this.idMovimientoDinero = idMovimientoDinero;
         this.montoMovimiento = montoMovimiento;
         this.conceptoMovimiento = conceptoMovimiento;
         this.empleado = empleado;
         this.empresa = empresa;
-        this.profile = profile;
         this.fecha = fecha;
     }
 
@@ -88,13 +87,6 @@ public class MovimientoDinero {
         this.empresa = empresa;
     }
 
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
 
     public Date getFecha() {
         return fecha;
@@ -112,7 +104,6 @@ public class MovimientoDinero {
                 ", conceptoMovimiento='" + conceptoMovimiento + '\'' +
                 ", empleado=" + empleado +
                 ", empresa=" + empresa +
-                ", profile=" + profile +
                 ", fecha=" + fecha +
                 '}';
     }

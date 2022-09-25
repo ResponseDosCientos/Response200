@@ -30,12 +30,12 @@
     <input type="text" name="concepto" th:field="*{conceptoMovimiento}"/>
 <!--    <span th:if="${#fields.hasErrors('conceptoMovimiento')}" th:errors="*{conceptoMovimiento}">Error concepto</span>-->
     <br>
-    <label for="profile">Profile </label>
-    <select th:field="*{profile.idProfile}" name="profile">
-        <option value="0" selected>Seleccione profile</option>
-        <option th:each="profile: ${perfiles}"
-                th:value="${profile.idProfile}"
-                th:text="${profile.nombreProfile}"
+    <label for="empleado">Empleado </label>
+    <select th:field="*{empleado.idEmpleado}" name="empleado">
+        <option value="0" selected>Seleccione empleado</option>
+        <option th:each="empleado: ${empleados}"
+                th:value="${empleado.idEmpleado}"
+                th:text="${empleado.nombre}"
         ></option>
     </select>
 <!--    <span th:if="${#fields.hasErrors('perfiles')}" th:errors="*{perfiles}">Error profile</span>-->
