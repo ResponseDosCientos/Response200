@@ -13,7 +13,7 @@
 <header th:fragment="header">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-2">
         <div class="container-fluid">
-            <a th:href="@{/}" class="navbar-brand">Sistema de ingreso y egreso de movimientos</a>
+            <a th:href="@{/}" class="navbar-brand">MOV</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,19 +25,25 @@
                     <li sec:authorize="isAuthenticated()" class="nav-item px-2">
                         <a th:href="@{/empleados/listar}" class="nav-link active">Empleados</a>
                     </li>
+                    <li>
+                        <a th:href="@{/empresas/listar}" class="nav-link active">Empresas</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/movimientos/listar}" class="nav-link active">Movimientos</a>
+                    </li>
                 </ul>
                 <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
                     <li class="nav-item mr-4">
                         <a href="#" class="nav-link">
                             <i class="fas fa-user"></i>
                             <span>Bienvenido</span>
-                            <span sec:authentication="name">  </span>
+                            <span sec:authentication="name">Usuario</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <form method="post" th:action="@{/logout}">
                             <a href="#" onclick="this.parentNode.submit();" class="nav-link">
-                                <i class="fas fa-user-times"></i>
+                                <i class="fas fa-sign-out-alt"></i>
                                 Salir
                             </a>
                         </form>
@@ -50,8 +56,9 @@
 <section th:fragment="mainIndex" id="main-index" class="py-2 bg-info text-white">
     <div class="container">
         <div class="row">
-            <h1 class="col-md-6">
-                <i class="fas fa-cog"></i>Sistema de gestión de movimientos
+            <h1 class="col-md-12">
+                <i class="fas fa-coins"></i>
+                <span>Sistema de gestión de movimientos</span>
             </h1>
         </div>
     </div>
@@ -59,13 +66,14 @@
 <section th:fragment="mainClientes" id="main-clientes" class="py-2 bg-warning text-white">
     <div class="container">
         <div class="row">
-            <h1 class="col-md-6">
-                <i class="fas fa-cog"></i>Gestión clientes
+            <h1 class="col-md-12">
+                <i class="fas fa-users-cog"></i>
+                <span>Gestión clientes</span>
             </h1>
         </div>
     </div>
 </section>
-<footer th:fragment="footer" class="bg-warning p-5 mt-5">
+<footer th:fragment="footer" class="bg-warning p-5 mt-5 footer-down">
     <div class="container">
         <div class="col">
             <p class="lead text-center">
@@ -79,4 +87,4 @@
 <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
-</html>>
+</html>

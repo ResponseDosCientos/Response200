@@ -2,62 +2,121 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Datos del empleado</title>
+    <title>Datos del usuario</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" >
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}" >
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}"><link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
-<h1>Datos de empleado</h1>
-<form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}">
-    <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}">
-    <br>
-    <label for="nombre">Nombre y Apellido </label>
-    <input type="text" name="nombre" th:field="*{nombre}"/>
-    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error nombre</span>
-    <br>
-    <label for="correo">Correo </label>
-    <input type="email" name="correo" th:field="*{correo}"/>
-    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}">Error Correo</span>
-    <br>
-    <label for="pass">Password </label>
-    <input type="text" name="pass" th:field="*{clave}"/>
-    <span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">Error clave</span>
-    <br>
-    <label for="username">Username </label>
-    <input type="text" name="username" th:field="*{username}"/>
-    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error username</span>
-    <br>
-    <label for="rol">Rol </label>
-    <select th:field="*{rol.idRol}" name="rol">
-        <option value="0" selected>Seleccione rol</option>
-        <option th:each="rol: ${roles}"
-                th:value="${rol.idRol}"
-                th:text="${rol.descripcion}"
-        ></option>
-    </select>
-    <span th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}">Error rol</span>
-    <br>
-    <label for="documento">documento </label>
-    <input type="text" name="documento" th:field="*{documento}"/>
-    <span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error cedula</span>
-    <br>
-    <label for="roleName"> Rol del Empleado </label>
-    <select th:field="*{roleName}" name="roleName">
-        <option value="" selected>Seleccione el rol del empleado</option>
-        <option th:each="roleName : ${T(co.gov.mintic.proyecto.gestion.entities.RoleName).values()}"
-                th:value="${roleName}"
-                th:text="${roleName}"
-        ></option>
-    </select>
-    <span th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Error rol del Empleado</span>
-    <br>
-    <label for="direccion">Dirección </label>
-    <input type="text" name="direccion" th:field="*{direccion}"/>
-    <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Dirección</span>
-    <br>
-    <label for="telefono">Telefono o Celular </label>
-    <input type="text" name="telefono" th:field="*{telefono}"/>
-    <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error Telefono</span>
-    <br>
-    <input type="submit" name="guardar" value="Guardar">
-</form>
+<header th:replace="layout/plantilla :: header"></header>
+<section th:replace="layout/plantilla :: mainClientes"></section>
+
+<section>
+    <div class="container">
+        <div class="card">
+            <h4 class="card-title">Datos de empleado</h4>
+            <div class="card-body">
+                <form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}">
+                    <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="nombre">Nombre </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="nombre" th:field="*{nombre}" placeholder="Nombre Empleado"/>
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="direccion">Direccion</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{direccion}" id="direccion" placeholder="Direccion">
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="telefono">Telefono</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{telefono}" id="telefono" placeholder="Telefono">
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="rol">Rol </label>
+                        <div class="col-sm-10">
+                            <select th:field="*{rol.idRol}" name="rol" class="custom-select" style="width:100%!important; height:100%!important; ">
+                                <option value="0" selected>Seleccione rol</option>
+                                <option th:each="rol : ${roles}"
+                                        th:value="${rol.idRol}"
+                                        th:text="${rol.descripcion}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="roleName">Rol del usuario</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{roleName}" name="rolName" class="custom-select" style="width:100%!important;height:100%!important;">
+                                <option value="" selected>Seleccione tipo de rol de usuario</option>
+                                <option th:each="roleName : ${T(co.gov.mintic.proyecto.gestion.entities.RoleName).values()}"
+                                        th:value="${roleName}"
+                                        th:text="${roleName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="documento">Número documento</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{documento}" id="documento" placeholder="Número de documento">
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="correo">Correo</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{correo}" id="correo" placeholder="Correo electrónico">
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="username">Username</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{username}" id="username" placeholder="Nombre de Usuario">
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="clave">Password</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" th:field="*{clave}" id="clave" placeholder="Contraseña Usuario">
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}"></div>
+                    </div>
+                    <div id="buttons" class="py-4 mb-4 bg-light">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a th:href="@{/empleados/listar}" class="btn btn-ligth btn-block">
+                                        <i class="fas fa-arrow-left"></i> Cancelar
+                                    </a>
+                                </div>
+                                <div class="col-md-3">
+                                    <button th:href="@{/empleados/listar}" type="submit" class="btn btn-success btn-block">
+                                        <i class="fas fa-check"></i> Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
+
 </body>
-</html>

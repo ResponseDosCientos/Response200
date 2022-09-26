@@ -1,5 +1,6 @@
 package co.gov.mintic.proyecto.gestion.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.Date;
 public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "id_movimiento", nullable = false)
     private long idMovimientoDinero;
 
@@ -30,7 +32,8 @@ public class MovimientoDinero {
     //@JoinColumn (name= "id_profile")
     //private Profile profile;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name= "fecha",nullable = false)
     private Date fecha;
 

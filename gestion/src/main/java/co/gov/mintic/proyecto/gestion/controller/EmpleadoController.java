@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import co.gov.mintic.proyecto.gestion.entities.Empleado;
@@ -18,6 +19,8 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static co.gov.mintic.proyecto.gestion.util.EncriptarPassword.encriptarPassword;
 
 @Controller
 public class EmpleadoController {
@@ -58,14 +61,22 @@ public class EmpleadoController {
 
 
     @PostMapping("/empleados/guardar")
-    public String guardarEmpleado(@Valid Empleado empleado, BindingResult error, Model modelo) {
-        LOG.log(Level.INFO, "guardarEmpleado");
+    public String guardarEmpleado(@Valid Empleado empleado, BindingResult error, Model modelo){
+        LOG.log(Level.INFO,"guardarEmpleado");
+        if(empleado.getRol().getIdRol() == 0) {
+            FieldError field = new FieldError("empleado", "rol","No puede ser null");
+            error.addError(field);
+        }
         for(ObjectError e : error.getAllErrors())
             System.out.println(e.toString());
         if(error.hasErrors()) {
+            //Roles
+            List<Rol> roles = rolService.findAll();
+            modelo.addAttribute("roles", roles);
             return "empleados/modificar";
         }
         empleado.setEstado(true);
+        empleado.setClave(encriptarPassword(empleado.getClave()));
         empleado = empleadoService.createEmpleado(empleado);
         return "redirect:/empleados/listar";
     }

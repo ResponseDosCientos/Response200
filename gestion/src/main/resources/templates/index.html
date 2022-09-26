@@ -30,7 +30,8 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Sistema de gestión de Empresas</h5>
-                    <p class="card-text">Descripción.</p>
+                    <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar empresas nuevas u antiguas.</p>
+                    <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver las empresas registradas.</p>
                     <a th:href="@{/empresas/listar}" class="btn btn-primary">Ingresar</a>
                 </div>
             </div>
@@ -39,7 +40,8 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Sistema de gestión de Movimientos</h5>
-                    <p class="card-text">Descripción</p>
+                    <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar movimientos nuevos u antiguos.</p>
+                    <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver los movimientos registrados por cada empresa para cada empleado.</p>
                     <a th:href="@{/movimientos/listar}" class="btn btn-primary">Ingresar</a>
                 </div>
             </div>

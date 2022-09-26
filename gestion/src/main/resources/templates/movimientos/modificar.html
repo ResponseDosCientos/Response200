@@ -2,49 +2,91 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nuevo Movimiento de Dinero</title>
+    <title>Datos del usuario</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" >
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}" >
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}"><link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
+<header th:replace="layout/plantilla :: header"></header>
+<section th:replace="layout/plantilla :: mainClientes"></section>
 
-<h1>Nuevo Movimiento de Dinero</h1>
+<section>
+    <div class="container">
+        <div class="card">
+            <h4 class="card-title">Datos del movimiento</h4>
+            <div class="card-body">
+                <form id="customer-form" th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
+                    <input type="hidden" name="idMovimientoDinero" th:field="*{idMovimientoDinero}">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="fecha">Fecha </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="datetime-local" name="fecha" th:field="*{fecha}"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="empresa">Empresa </label>
+                        <div class="col-sm-10">
+                            <select th:field="*{empresa.idEmpresa}" name="empresa" class="custom-select" style="width:100%!important; height:100%!important; ">
+                                <option value="0" selected>Seleccione empresa</option>
+                                <option th:each="empresa: ${empresas}"
+                                        th:value="${empresa.idEmpresa}"
+                                        th:text="${empresa.nombreEmpresa}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="empleado">Empleado</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{empleado.idEmpleado}" name="empleado" class="custom-select" style="width:100%!important;height:100%!important;">
+                                <option value="0" selected>Seleccione empleado</option>
+                                <option th:each="empleado: ${empleados}"
+                                        th:value="${empleado.idEmpleado}"
+                                        th:text="${empleado.nombre}"
+                                ></option>
+                            </select>
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('empleado')}" th:errors="*{empleado}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="concepto">Concepto Movimiento</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="concepto" th:field="*{conceptoMovimiento}" placeholder="Concepto Movimiento">
+                        </div>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('conceptoMovimiento')}" th:errors="*{conceptoMovimiento}"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="monto">Monto</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" th:field="*{montoMovimiento}" id="monto">
+                        </div>
 
+                    <div id="buttons" class="py-4 mb-4 bg-light">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a th:href="@{/movimientos/listar}" class="btn btn-ligth btn-block">
+                                        <i class="fas fa-arrow-left"></i> Cancelar
+                                    </a>
+                                </div>
+                                <div class="col-md-3">
+                                    <button th:href="@{/movimientos/listar}" type="submit" class="btn btn-success btn-block">
+                                        <i class="fas fa-check"></i> Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
-<form id="customer-form"  th:action="@{/movimientos/guardar}" method="post" th:object="${movimiento}">
-    <input type="hidden" name="idMovimientoDinero" th:field="*{idMovimientoDinero}">
-    <label for="fecha">Fecha</label>
-    <input type="date" name="fecha" th:field="*{fecha}"/>
-<!--    <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Error fecha</span>-->
-    <br>
-    <label for="empresa">Empresa </label>
-     <select th:field="*{empresa.idEmpresa}" name="empresa">
-        <option value="0" selected>Seleccione empresa</option>
-        <option th:each="empresa: ${empresas}"
-                th:value="${empresa.idEmpresa}"
-                th:text="${empresa.nombreEmpresa}">
-        </option>
-    </select>
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 
-<!--    <span th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Error empresa</span>-->
-    <br>
-    <label for="concepto">Concepto</label>
-    <input type="text" name="concepto" th:field="*{conceptoMovimiento}"/>
-<!--    <span th:if="${#fields.hasErrors('conceptoMovimiento')}" th:errors="*{conceptoMovimiento}">Error concepto</span>-->
-    <br>
-    <label for="empleado">Empleado </label>
-    <select th:field="*{empleado.idEmpleado}" name="empleado">
-        <option value="0" selected>Seleccione empleado</option>
-        <option th:each="empleado: ${empleados}"
-                th:value="${empleado.idEmpleado}"
-                th:text="${empleado.nombre}"
-        ></option>
-    </select>
-<!--    <span th:if="${#fields.hasErrors('perfiles')}" th:errors="*{perfiles}">Error profile</span>-->
-    <br>
-    <label for="monto">Monto</label>
-    <input type="number" name="monto" th:field="*{montoMovimiento}"/>
-<!--    <span th:if="${#fields.hasErrors('montoMovimiento')}" th:errors="*{montoMovimiento}">Error monto</span>-->
-    <br>
-    <input type="submit" name="guardar" value="Guardar">
-</form>
 </body>
-</html>
