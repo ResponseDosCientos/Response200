@@ -25,10 +25,10 @@
                     <li sec:authorize="isAuthenticated()" class="nav-item px-2">
                         <a th:href="@{/empleados/listar}" class="nav-link active">Empleados</a>
                     </li>
-                    <li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item px-2">
                         <a th:href="@{/empresas/listar}" class="nav-link active">Empresas</a>
                     </li>
-                    <li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item px-2">
                         <a th:href="@{/movimientos/listar}" class="nav-link active">Movimientos</a>
                     </li>
                 </ul>
