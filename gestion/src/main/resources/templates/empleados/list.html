@@ -1,40 +1,103 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Lista de empleados</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" >
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}" >
+    <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
-<h1>Lista de empleados</h1>
-<a th:href="@{/}">Home</a>
-<br>
-<a th:href="@{/empleados/modificar}">Nuevo empleado</a>
-<br>
-<table border="1">
-    <h1> Lista de Empleados</h1>
-    <!--Dibujamos la tabla-->
-    <br><table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>    <!-- titulos de la tabla -->
-        <th>Correo</th>
-        <th>Empresa</th>
-        <th>Rol</th>
-        <th>Estado</th>
-        <th>Movimientos</th>
-        <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
-        <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
-    </tr>
-    <tr th:each="empleado : ${empleados}">
-        <td th:text="${empleado.documento}"></td>
-        <td th:text="${empleado.nombre}"></td>
-        <td th:text="${empleado.direccion}"></td>
-        <td th:text="${empleado.telefono}"></td>
-        <td th:text="${empleado.correo}"></td>
-        <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/empleados/editar/} + ${empleado.idEmpleado}" th:text="Editar"></a></td>
-        <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/empleados/eliminar/} + ${empleado.idEmpleado}" th:text="Eliminar"></a></td>
+<header th:replace="layout/plantilla :: header"></header>
+<section th:replace="layout/plantilla :: mainClientes"></section>
 
-    </tr>
-</table>
+<section>
+    <div class="container">
+        <div class="card">
+            <h4 class="card-title">Lista de empleados</h4>
+            <div class="card-body">
+                <div th:if="${empleados != null and !empleados.empty}">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Username</th>
+                            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+                            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="empleado, contador : ${empleados}" th:if="${empleado.estado}">
+                            <td th:text="${contador.count}"></td>
+                            <td th:text="${empleado.nombre}"></td>
+                            <td th:text="${empleado.correo}"></td>
+                            <td th:text="${empleado.telefono}"></td>
+                            <td th:text="${empleado.username}"></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empleados/editar/} + ${empleado.idEmpleado}" class="btn btn-primary">
+                                <i class="fa fa-edit"></i>
+                            </a></td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empleados/eliminar/} + ${empleado.idEmpleado}" class="btn btn-secondary">
+                                <i class="fa fa-remove"></i>
+                            </a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:if="${empleados == null or empleados.empty}">
+                    <span>No hay elementos en la lista</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-4 m-4">
+    <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="row">
+            <div class="col-md-4">
+                <a th:href="@{/empleados/crear}" class="btn btn-primary btn-block">
+                    <i class="fas fa-plus"></i>
+                    <span>Agregar</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="agregarEmpleado" tabindex="-1" aria-labelledby="agregarEmpleado" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarEmpleado">Datos del usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}" class="was-validated">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nombre">Nombre </label>
+                                <input type="text" name="nombre" class="form-control" required="true"/>
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
 </body>
 </html>

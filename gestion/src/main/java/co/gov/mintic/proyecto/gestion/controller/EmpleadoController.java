@@ -21,7 +21,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@RestController
+import static co.gov.mintic.proyecto.gestion.util.EncriptarPassword.encriptarPassword;
+
+@Controller
 public class EmpleadoController {
 
     @Autowired
@@ -41,7 +43,11 @@ public class EmpleadoController {
 =======
 >>>>>>> development
     @GetMapping("/empleados/listar")
+<<<<<<< HEAD
     public String getListEmpleados(Model model) {
+=======
+    public String getListEmpleados(Model model){
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
         LOG.log(Level.INFO,"getListEmpleados");
         List<Empleado> empleados = empleadoService.findAll();
         model.addAttribute("empleados", empleados);
@@ -64,10 +70,17 @@ public class EmpleadoController {
     }
 
 
+<<<<<<< HEAD
     @PostMapping("/guardar")
     public String guardarEmpleado(@Valid Empleado user, BindingResult error, Model modelo){
         LOG.log(Level.INFO,"guardarEmpleado");
         if(user.getRol().getIdRol() == 0) {
+=======
+    @PostMapping("/empleados/guardar")
+    public String guardarEmpleado(@Valid Empleado empleado, BindingResult error, Model modelo){
+        LOG.log(Level.INFO,"guardarEmpleado");
+        if(empleado.getRol().getIdRol() == 0) {
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
             FieldError field = new FieldError("empleado", "rol","No puede ser null");
             error.addError(field);
         }
@@ -77,11 +90,19 @@ public class EmpleadoController {
             //Roles
             List<Rol> roles = rolService.findAll();
             modelo.addAttribute("roles", roles);
+<<<<<<< HEAD
 
             return "empleados/modificar";
         }
         user.setEstado(true);
         user = empleadoService.createEmpleado(user);
+=======
+            return "empleados/modificar";
+        }
+        empleado.setEstado(true);
+        empleado.setClave(encriptarPassword(empleado.getClave()));
+        empleado = empleadoService.createEmpleado(empleado);
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
         return "redirect:/empleados/listar";
     }
 

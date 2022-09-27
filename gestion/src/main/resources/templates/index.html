@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header th:replace="layout/plantilla :: header"></header>
 <head>
     <!-- Comentarios -->
     <meta charset="UTF-8">
@@ -9,6 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
 <body>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     <h1>Menu</h1>
@@ -51,12 +54,35 @@
             </div>
         </div>
 <<<<<<< HEAD
+=======
+
+<section th:replace="layout/plantilla :: mainIndex"></section>
+<div class="container m-3">
+    <p th:text="${mensaje}" ></p>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sistema de gestión de empleados</h5>
+                    <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar usuarios nuevos u antiguos.</p>
+                    <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver los usuarios registrados.</p>
+                    <a th:href="@{/empleados/listar}" class="btn btn-primary">Ingresar</a>
+                </div>
+            </div>
+        </div>
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Sistema de gestión de Empresas</h5>
+<<<<<<< HEAD
                     <p class="card-text">Descripción.</p>
                     <a href="#" class="btn btn-primary">Ingresar</a>
+=======
+                    <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar empresas nuevas u antiguas.</p>
+                    <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver las empresas registradas.</p>
+                    <a th:href="@{/empresas/listar}" class="btn btn-primary">Ingresar</a>
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
                 </div>
             </div>
         </div>
@@ -64,6 +90,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Sistema de gestión de Movimientos</h5>
+<<<<<<< HEAD
                     <p class="card-text">Descripción</p>
                     <a href="#" class="btn btn-primary">Ingresar</a>
                 </div>
@@ -71,6 +98,12 @@
         <div class="col-2">
             <div class="p-5 border bg-light"><a th:href="@{/perfiles/list}">Sistema de Gestión de Perfiles</a>
 >>>>>>> 0b68d286c1f77251e8934e5e0901d67125e5e3aa
+=======
+                    <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar movimientos nuevos u antiguos.</p>
+                    <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver los movimientos registrados por cada empresa para cada empleado.</p>
+                    <a th:href="@{/movimientos/listar}" class="btn btn-primary">Ingresar</a>
+                </div>
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
             </div>
         </div>
     </div>
@@ -79,6 +112,9 @@
 <footer th:replace="layout/plantilla :: footer"></footer>
 <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/webjars/popper/js/2.9.3/umd/popper.min.js}"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
 </body>
 </html>

@@ -13,7 +13,11 @@
   <header th:fragment="header">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-2">
         <div class="container-fluid">
+<<<<<<< HEAD
             <a th:href="@{/}" class="navbar-brand">SIEM</a>
+=======
+            <a th:href="@{/}" class="navbar-brand">MOV</a>
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,6 +29,12 @@
                     <li sec:authorize="isAuthenticated()" class="nav-item px-2">
                         <a th:href="@{/empleados/listar}" class="nav-link active">Empleados</a>
                     </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item px-2">
+                        <a th:href="@{/empresas/listar}" class="nav-link active">Empresas</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item px-2">
+                        <a th:href="@{/movimientos/listar}" class="nav-link active">Movimientos</a>
+                    </li>
                 </ul>
 <<<<<<< HEAD
                 <ul class="navbar-nav ms-auto">
@@ -35,7 +45,7 @@
                         <a href="#" class="nav-link">
                             <i class="fas fa-user"></i>
                             <span>Bienvenido</span>
-                            <span sec:authentication="name">  </span>
+                            <span sec:authentication="name">Usuario</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -70,8 +80,13 @@
             </h1>
         </div>
     </div>
+<<<<<<< HEAD
   </section>
   <footer th:fragment="footer" class="bg-warning p-5 mt-5 footer-down">
+=======
+</section>
+<footer th:fragment="footer" class="bg-warning p-5 mt-5 footer-down">
+>>>>>>> c224005c6751c731882f0ee4585ed74a66cacee0
     <div class="container">
         <div class="col">
             <p class="lead text-center">
