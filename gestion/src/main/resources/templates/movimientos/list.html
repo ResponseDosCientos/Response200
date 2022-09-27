@@ -10,9 +10,9 @@
 </head>
 <body>
 <header th:replace="layout/plantilla :: header"></header>
-<section th:replace="layout/plantilla :: mainClientes"></section>
+<section th:replace="layout/plantilla :: mainMovimiento"></section>
 
-<section>
+<section class="p-5 bg-light">
     <div class="container">
         <div class="card">
             <h4 class="card-title">Lista de movimientos</h4>
@@ -39,10 +39,10 @@
                             <td th:text="${movimiento.empleado.nombre}"></td>
                             <td th:text="${movimiento.conceptoMovimiento}"></td>
                             <td th:text="${movimiento.montoMovimiento}"></td>
-                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}" class="btn btn-primary">
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/editar/} + ${movimiento.idMovimientoDinero}" class="btn btn-info btn-floating">
                                 <i class="fa fa-edit"></i>
                             </a></td>
-                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" class="btn btn-secondary">
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/movimientos/eliminar/} + ${movimiento.idMovimientoDinero}" class="btn btn-danger btn-floating">
                                 <i class="fa fa-remove"></i>
                             </a></td>
                         </tr>

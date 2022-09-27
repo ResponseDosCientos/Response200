@@ -12,7 +12,7 @@
 <header th:replace="layout/plantilla :: header"></header>
 <section th:replace="layout/plantilla :: mainClientes"></section>
 
-<section>
+<section class="p-5 bg-light">
     <div class="container">
         <div class="card">
             <h4 class="card-title">Lista de empleados</h4>
@@ -37,10 +37,10 @@
                             <td th:text="${empleado.correo}"></td>
                             <td th:text="${empleado.telefono}"></td>
                             <td th:text="${empleado.username}"></td>
-                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empleados/editar/} + ${empleado.idEmpleado}" class="btn btn-primary">
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empleados/editar/} + ${empleado.idEmpleado}" class="btn btn-info btn-floating">
                                 <i class="fa fa-edit"></i>
                             </a></td>
-                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empleados/eliminar/} + ${empleado.idEmpleado}" class="btn btn-secondary">
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empleados/eliminar/} + ${empleado.idEmpleado}" class="btn btn-danger btn-floating">
                                 <i class="fa fa-remove"></i>
                             </a></td>
                         </tr>
@@ -68,33 +68,33 @@
     </div>
 </section>
 
-<section>
+<!--<section>-->
 
-    <!-- Modal -->
-    <div class="modal fade" id="agregarEmpleado" tabindex="-1" aria-labelledby="agregarEmpleado" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="agregarEmpleado">Datos del usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}" class="was-validated">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="nombre">Nombre </label>
-                                <input type="text" name="nombre" class="form-control" required="true"/>
-                            </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--    &lt;!&ndash; Modal &ndash;&gt;-->
+<!--    <div class="modal fade" id="agregarEmpleado" tabindex="-1" aria-labelledby="agregarEmpleado" aria-hidden="true">-->
+<!--        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="agregarEmpleado">Datos del usuario</h5>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}" class="was-validated">-->
+<!--                        <div class="modal-body">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="nombre">Nombre </label>-->
+<!--                                <input type="text" name="nombre" class="form-control" required="true"/>-->
+<!--                            </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>-->
+<!--                    <button type="button" class="btn btn-primary">Guardar</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 <footer th:replace="layout/plantilla :: footer"></footer>
 <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<header th:replace="layout/plantilla :: header"></header>
 <head>
     <!-- Comentarios -->
     <meta charset="UTF-8">
@@ -12,13 +11,16 @@
 </head>
 <body>
 
+<header th:replace="layout/plantilla :: header"></header>
 <section th:replace="layout/plantilla :: mainIndex"></section>
-<div class="container m-3">
-    <p th:text="${mensaje}" ></p>
-    <div class="row">
+
+<div class="container text-center bg-light">
+    <p th:text="${mensaje}" class="fw-bold p-5"></p>
+    <div class="row text-center" style="margin-bottom: 8rem;">
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body text-center">
+                    <i class='fas fa-user-circle' style='font-size:50px'></i>
                     <h5 class="card-title">Sistema de gestión de empleados</h5>
                     <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar usuarios nuevos u antiguos.</p>
                     <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver los usuarios registrados.</p>
@@ -28,7 +30,8 @@
         </div>
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body text-center">
+                    <i class='fas fa-landmark' style='font-size:50px'></i>
                     <h5 class="card-title">Sistema de gestión de Empresas</h5>
                     <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar empresas nuevas u antiguas.</p>
                     <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver las empresas registradas.</p>
@@ -39,7 +42,8 @@
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Sistema de gestión de Movimientos</h5>
+                    <i class='fas fa-coins' style='font-size:50px'></i>
+                    <h5 class="card-title">Sistema gestión de Movimientos</h5>
                     <p sec:authorize="hasRole('ROLE_ADMIN')" class="card-text">Aqui puedes agregar, editar y eliminar movimientos nuevos u antiguos.</p>
                     <p sec:authorize="hasRole('ROLE_USER')" class="card-text">Aqui puedes ver los movimientos registrados por cada empresa para cada empleado.</p>
                     <a th:href="@{/movimientos/listar}" class="btn btn-primary">Ingresar</a>

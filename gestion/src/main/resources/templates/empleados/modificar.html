@@ -7,110 +7,108 @@
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.0.0/css/all.min.css}" >
     <link rel="stylesheet" th:href="@{/css/css-footer.css}"><link rel="stylesheet" th:href="@{/css/css-footer.css}">
 </head>
+
 <body>
 <header th:replace="layout/plantilla :: header"></header>
 <section th:replace="layout/plantilla :: mainClientes"></section>
 
-<section>
-    <div class="container">
-        <div class="card">
-            <h4 class="card-title">Datos de empleado</h4>
+<section class="p-5 bg-light">
+    <div class="container col-sm-6 text-center">
+        <div class="card" style="background-color: #FD8;">
+            <h1 class="card-title d-flex align-items-center justify-content-center">Datos de empleado</h1>
             <div class="card-body">
                 <form id="customer-form" th:action="@{/empleados/guardar}" method="post" th:object="${empleado}">
                     <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}">
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="nombre">Nombre </label>
-                        <div class="col-sm-10">
+                    <div class="row md-6">
+                        <label class="col-form-label fw-bold" for="nombre">Nombre </label>
+                        <div>
                             <input class="form-control" type="text" name="nombre" th:field="*{nombre}" placeholder="Nombre Empleado"/>
                         </div>
                         <div class="alert alert-warning" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="direccion">Direccion</label>
-                        <div class="col-sm-10">
+                    <div class="row md-6">
+                        <label class="col-form-label fw-bold" for="direccion">Direccion</label>
+                        <div class="col-mb-4">
                             <input class="form-control" type="text" th:field="*{direccion}" id="direccion" placeholder="Direccion">
                         </div>
                         <div class="alert alert-warning" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="telefono">Telefono</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" th:field="*{telefono}" id="telefono" placeholder="Telefono">
+                    <div class="row md-6">
+                        <div class="col-md-6">
+                            <label class="col-form-label fw-bold" for="telefono">Telefono</label>
+                            <div class="col-mb-4">
+                                <input class="form-control" type="text" th:field="*{telefono}" id="telefono" placeholder="Telefono">
+                            </div>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
                         </div>
-                        <div class="alert alert-warning" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="rol">Rol </label>
-                        <div class="col-sm-10">
-                            <select th:field="*{rol.idRol}" name="rol" class="custom-select" style="width:100%!important; height:100%!important; ">
-                                <option value="0" selected>Seleccione rol</option>
-                                <option th:each="rol : ${roles}"
-                                        th:value="${rol.idRol}"
-                                        th:text="${rol.descripcion}">
-                                </option>
-                            </select>
+                        <div class="col-md-6">
+                            <label class="col-form-label fw-bold" for="rol">Rol </label>
+                            <div class="col-mb-4">
+                                <select class="form-select" th:field="*{rol.idRol}" name="rol">
+                                    <option value="0" selected>Seleccione rol</option>
+                                    <option th:each="rol : ${roles}"
+                                            th:value="${rol.idRol}"
+                                            th:text="${rol.descripcion}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></div>
                         </div>
-                        <div class="alert alert-warning" th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="roleName">Rol del usuario</label>
-                        <div class="col-sm-10">
-                            <select th:field="*{roleName}" name="rolName" class="custom-select" style="width:100%!important;height:100%!important;">
-                                <option value="" selected>Seleccione tipo de rol de usuario</option>
-                                <option th:each="roleName : ${T(co.gov.mintic.proyecto.gestion.entities.RoleName).values()}"
-                                        th:value="${roleName}"
-                                        th:text="${roleName}">
-                                </option>
-                            </select>
+                    <div class="row md-6">
+                        <div class="col-md-6">
+                            <label class="col-form-label fw-bold" for="roleName">Rol del usuario</label>
+                            <div class="col-mb-4">
+                                <select class="form-select" th:field="*{roleName}" name="rolName">
+                                    <option value="" selected>Seleccione tipo de rol de usuario</option>
+                                    <option th:each="roleName : ${T(co.gov.mintic.proyecto.gestion.entities.RoleName).values()}"
+                                            th:value="${roleName}"
+                                            th:text="${roleName}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}"></div>
                         </div>
-                        <div class="alert alert-warning" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}"></div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="documento">Número documento</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" th:field="*{documento}" id="documento" placeholder="Número de documento">
+                        <div class="col-md-6">
+                            <label class="col-mb-4 col-form-label fw-bold" for="documento">Número documento</label>
+                            <div class="col-mb-4">
+                                <input class="form-control" type="text" th:field="*{documento}" id="documento" placeholder="Número de documento">
+                            </div>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}"></div>
                         </div>
-                        <div class="alert alert-warning" th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}"></div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="correo">Correo</label>
-                        <div class="col-sm-10">
+                    <div class="row md-6">
+                        <label class="col-mb-4 col-form-label fw-bold" for="correo">Correo</label>
+                        <div class="col-mb-4">
                             <input class="form-control" type="text" th:field="*{correo}" id="correo" placeholder="Correo electrónico">
                         </div>
                         <div class="alert alert-warning" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="username">Username</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" th:field="*{username}" id="username" placeholder="Nombre de Usuario">
-                        </div>
-                        <div class="alert alert-warning" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="clave">Password</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" th:field="*{clave}" id="clave" placeholder="Contraseña Usuario">
-                        </div>
-                        <div class="alert alert-warning" th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}"></div>
-                    </div>
-                    <div id="buttons" class="py-4 mb-4 bg-light">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <a th:href="@{/empleados/listar}" class="btn btn-ligth btn-block">
-                                        <i class="fas fa-arrow-left"></i> Cancelar
-                                    </a>
-                                </div>
-                                <div class="col-md-3">
-                                    <button th:href="@{/empleados/listar}" type="submit" class="btn btn-success btn-block">
-                                        <i class="fas fa-check"></i> Guardar
-                                    </button>
-                                </div>
+                    <div class="row md-6">
+                        <div class="col-md-6">
+                            <label class="col-form-label fw-bold" for="username">Username</label>
+                            <div class="col-mb-4">
+                                <input class="form-control" type="text" th:field="*{username}" id="username" placeholder="Nombre de Usuario">
                             </div>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="col-form-label fw-bold" for="clave">Password</label>
+                            <div class="col-mb-4">
+                                <input class="form-control" type="text" th:field="*{clave}" id="clave" placeholder="Contraseña Usuario">
+                            </div>
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}"></div>
                         </div>
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+            <a th:href="@{/empleados/listar}" class="btn btn-info btn-block">
+                <i class="fas fa-arrow-left"></i> Cancelar</a>
+            <button th:href="@{/empleados/listar}" type="submit" class="btn btn-success btn-block">
+                <i class="fas fa-check"></i> Guardar
+            </button>
         </div>
     </div>
 </section>

@@ -10,9 +10,9 @@
 </head>
 <body>
 <header th:replace="layout/plantilla :: header"></header>
-<section th:replace="layout/plantilla :: mainClientes"></section>
+<section th:replace="layout/plantilla :: mainEmpresa"></section>
 
-<section>
+<section class="p-5 bg-light">
     <div class="container">
         <div class="card">
             <h4 class="card-title">Lista de empresas</h4>
@@ -35,10 +35,10 @@
                             <td th:text="${empresa.nombreEmpresa}"></td>
                             <td th:text="${empresa.direccion}"></td>
                             <td th:text="${empresa.telefono}"></td>
-                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresas/editar/} + ${empresa.idEmpresa}" class="btn btn-primary">
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresas/editar/} + ${empresa.idEmpresa}" class="btn btn-info">
                                 <i class="fa fa-edit"></i>
                             </a></td>
-                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresas/eliminar/} + ${empresa.idEmpresa}" class="btn btn-secondary">
+                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/empresas/eliminar/} + ${empresa.idEmpresa}" class="btn btn-danger btn-circle">
                                 <i class="fa fa-remove"></i>
                             </a></td>
                         </tr>

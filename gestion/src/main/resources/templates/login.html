@@ -11,31 +11,31 @@
 <header th:replace="layout/plantilla :: header"></header>
 <section th:replace="layout/plantilla :: mainIndex"></section>
 
-<section class="p-5">
-    <div class="container">
+<section class="p-5 bg-light">
+    <div class="container col-sm-4 text-center">
         <div class="row">
-            <div class="card">
+            <div class="card" style="background-color: #FD8;">
                 <h4 class="card-title d-flex align-items-center justify-content-center">Ingreso de usuarios</h4>
                 <div class="card-body">
                     <form method="POST" th:action="@{/login}">
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="username">Usuario</label>
-                            <div class="col-sm-8">
-                                <input class="form-control" type="text" name="username" placeholder="Username"/>
+                            <label class="col-mb-4 col-form-label" for="username">Username</label>
+                            <div class="col-mb-4">
+                                <input class="form-control" type="text" name="username" placeholder="Empleado"/>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="password">Contraseña</label>
-                            <div class="col-sm-8">
+                            <label class="col-mb-4 col-form-label" for="password">Password</label>
+                            <div class="col-mb-4">
                                 <input class="form-control" type="password" name="password" placeholder="Password"/>
                             </div>
                         </div>
-                        <div id="buttons" class="py-2 mb-4 bg-light">
-                            <div class="container">
+                        <div id="buttons" class="py-4 mb-4 bg-light">
+                            <div class="container text-center">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-mb-4">
                                         <button type="submit" class="btn btn-success btn-block">
-                                            <i class="fas fa-check"></i> Ingresar
+                                            <i class="fas fa-check"></i> Login
                                         </button>
                                     </div>
                                 </div>
